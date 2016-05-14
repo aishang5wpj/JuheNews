@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">聚合阅读</string>
+    <string name="navigation_news">新闻</string>
+    <string name="navigation_movies">电影</string>
+    <string name="navigation_picture">图片</string>
+    <string name="navigation_joke">笑话</string>
+    <string name="navigation_menu">菜谱</string>
+    <string name="navigation_weather">天气</string>
+    <string name="navigation_about">关于</string>
+</resources>
