@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">聚合阅读</string>
+
+    <!--首页菜单-->
     <string name="navigation_news">新闻</string>
     <string name="navigation_movies">电影</string>
     <string name="navigation_picture">图片</string>
@@ -7,4 +9,14 @@
     <string name="navigation_menu">菜谱</string>
     <string name="navigation_weather">天气</string>
     <string name="navigation_about">关于</string>
+
+    <!--新闻模块-->
+    <string name="news_recommend">推荐</string>
+    <string name="news_weixin">微信精选</string>
+    <string name="news_society">社会</string>
+    <string name="news_technology">科技</string>
+    <string name="news_sport">体育</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 </resources>

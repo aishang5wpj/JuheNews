@@ -3,18 +3,15 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppTheme.Base">
         <!-- Customize your theme here. -->
+        <!--菜单选中时的文字颜色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-        <!-- Actionbar color -->
-        <item name="colorPrimary">@color/accent_material_dark</item>
-        <!--Status bar color-->
-        <item name="colorPrimaryDark">@color/accent_material_light</item>
         <!--Window color-->
         <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
     </style>

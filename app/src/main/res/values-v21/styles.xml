@@ -10,7 +10,7 @@
         <item name="android:navigationBarColor">@color/accent_material_light</item>
     </style>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
         <!-- 使用 API Level 22 編譯的話，要拿掉前綴字 -->
