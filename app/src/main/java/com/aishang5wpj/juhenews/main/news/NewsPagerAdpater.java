@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class NewsPagerAdpater extends FragmentPagerAdapter {
 
-    private final List<Fragment> mFragments = new ArrayList<>();
-    private final List<String> mFragmentTitles = new ArrayList<>();
+    private List<Fragment> mFragments = new ArrayList<>();
+    private List<String> mFragmentTitles = new ArrayList<>();
 
     public NewsPagerAdpater(FragmentManager fm) {
         super(fm);
@@ -22,6 +22,7 @@ public class NewsPagerAdpater extends FragmentPagerAdapter {
     public void addFragment(Fragment fragment, String title) {
         mFragments.add(fragment);
         mFragmentTitles.add(title);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -37,5 +38,19 @@ public class NewsPagerAdpater extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         return mFragmentTitles.get(position);
+    }
+
+    public void clear() {
+        mFragments.clear();
+        mFragmentTitles.clear();
+    }
+
+    public void setData(List<Fragment> fragmentList, List<String> nameList) {
+        if (null == fragmentList) {
+            return;
+        }
+        mFragments = fragmentList;
+        mFragmentTitles = nameList;
+        notifyDataSetChanged();
     }
 }

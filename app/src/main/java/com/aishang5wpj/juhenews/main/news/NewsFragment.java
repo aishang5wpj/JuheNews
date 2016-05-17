@@ -1,40 +1,26 @@
 package com.aishang5wpj.juhenews.main.news;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseFragment;
+import com.aishang5wpj.juhenews.bean.NewsChannelBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wpj on 16/5/16上午10:41.
  */
-public class NewsFragment extends BaseFragment {
+public class NewsFragment extends BaseFragment implements INewsChannelView {
 
-    /**
-     * http://apistore.baidu.com/apiworks/servicedetail/688.html
-     */
-    public static final int NEWS_RECOMMEND = 0;
-    /**
-     * http://apistore.baidu.com/apiworks/servicedetail/632.html
-     */
-    public static final int NEWS_WEI_XIN = 1;
-    /**
-     * http://apistore.baidu.com/apiworks/servicedetail/868.html
-     */
-    public static final int NEWS_SOCIETY = 2;
-    /**
-     * http://apistore.baidu.com/apiworks/servicedetail/1061.html
-     */
-    public static final int NEWS_TECHNOLOGY = 3;
-    /***
-     * http://apistore.baidu.com/apiworks/servicedetail/711.html
-     */
-    public static final int NEWS_SPORT = 4;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private NewsPagerAdpater mPagerAdpater;
+    private NewsPresenterImpl mNewsPresenter;
 
     @Override
     protected int getLayoutId() {
@@ -56,25 +42,39 @@ public class NewsFragment extends BaseFragment {
     @Override
     public void onInitData() {
         mPagerAdpater = new NewsPagerAdpater(getChildFragmentManager());
-        mPagerAdpater.addFragment(NewsListFragment.newInstance(NEWS_RECOMMEND), getString(R.string.news_recommend));
-        mPagerAdpater.addFragment(NewsListFragment.newInstance(NEWS_WEI_XIN), getString(R.string.news_weixin));
-        mPagerAdpater.addFragment(NewsListFragment.newInstance(NEWS_SOCIETY), getString(R.string.news_society));
-        mPagerAdpater.addFragment(NewsListFragment.newInstance(NEWS_TECHNOLOGY), getString(R.string.news_technology));
-        mPagerAdpater.addFragment(NewsListFragment.newInstance(NEWS_SPORT), getString(R.string.news_sport));
-
         mViewPager.setAdapter(mPagerAdpater);
-        mViewPager.setOffscreenPageLimit(4);
-
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.news_recommend));
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.news_weixin));
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.news_society));
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.news_technology));
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.news_sport));
         mTabLayout.setupWithViewPager(mViewPager);
+
+        mNewsPresenter = new NewsPresenterImpl(this);
+        mNewsPresenter.loadChannel();
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onLoadChannelCompleted(NewsChannelBean channelBean) {
+
+        mPagerAdpater.clear();
+        mTabLayout.removeAllTabs();
+
+        List<Fragment> fragmentList = new ArrayList<>();
+        List<String> nameList = new ArrayList<>();
+        List<NewsChannelBean.Channel> channelList = channelBean.showapi_res_body.channelList;
+        for (NewsChannelBean.Channel channel : channelList) {
+
+            fragmentList.add(NewsListFragment.newInstance(channel));
+            nameList.add(channel.name);
+            mTabLayout.addTab(mTabLayout.newTab().setText(channel.name));
+        }
+        mPagerAdpater.setData(fragmentList, nameList);
+        mViewPager.setOffscreenPageLimit(channelList.size() - 1);
+    }
+
+    @Override
+    public void runOnUiThread(Runnable runnable) {
+        getActivity().runOnUiThread(runnable);
     }
 }

@@ -1,0 +1,66 @@
+{
+  "showapi_res_code": 0,
+  "showapi_res_error": "",
+  "showapi_res_body": {
+    "channelList": [
+      {
+        "channelId": "5572a108b3cdc86cf39001cd",
+        "name": "国内焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001ce",
+        "name": "国际焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001cf",
+        "name": "军事焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d0",
+        "name": "财经焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d1",
+        "name": "互联网焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d2",
+        "name": "房产焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d3",
+        "name": "汽车焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d4",
+        "name": "体育焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d5",
+        "name": "娱乐焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d6",
+        "name": "游戏焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d7",
+        "name": "教育焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d8",
+        "name": "女人焦点"
+      },
+      {
+        "channelId": "5572a108b3cdc86cf39001d9",
+        "name": "科技焦点"
+      },
+      {
+        "channelId": "5572a109b3cdc86cf39001da",
+        "name": "社会焦点"
+      }
+    ],
+    "ret_code": 0,
+    "totalNum": 44
+  }
+}

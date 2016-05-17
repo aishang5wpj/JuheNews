@@ -1,6 +1,9 @@
 package com.aishang5wpj.juhenews.utils;
 
 
+import android.content.Context;
+import android.content.res.AssetManager;
+
 import com.aishang5wpj.juhenews.app.MyApplication;
 
 import java.io.BufferedReader;
@@ -10,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
@@ -69,5 +73,42 @@ public class FileUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String readAssertsFile(Context context, String name) {
+        try {
+            AssetManager assetManager = context.getResources().getAssets();
+            InputStream inputStream = assetManager.open(name);
+            String result = readInputStream(inputStream);
+            inputStream.close();
+            return result;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String readInputStream(InputStream inputStream) {
+
+        StringBuilder sBuilder = new StringBuilder();
+        BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+        try {
+            String line = br.readLine();
+            while (line != null) {
+                sBuilder.append(line);
+                sBuilder.append("\n");
+                line = br.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                br.close();
+                br = null;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return sBuilder.toString();
     }
 }

@@ -30,4 +30,5 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.9.0+'
     compile 'com.android.support:recyclerview-v7:23.+'
     compile project(':SwipebackLayout')
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }
