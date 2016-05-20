@@ -1,33 +1,35 @@
 package com.aishang5wpj.juhenews.bean;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by wpj on 16/5/17下午1:16.
+ * Created by wpj on 16/5/17下午5:53.
  */
-public class NewsChannelBean {
-    public String showapi_res_code = "";
-    public String showapi_res_error = "";
-    public Body showapi_res_body;
+public class NewsChannelBean implements Serializable {
 
-    public NewsChannelBean() {
-        showapi_res_body = new Body();
-    }
+    public String name;
+    public String hasRange;
+    public String enable;
+    private String url;
 
-    public class Body {
-        public String ret_code = "";
-        public String totalNum = "";
-        public List<Channel> channelList;
+    /**
+     * @param pageNum  从0开始
+     * @param pageSize
+     * @return
+     */
+    public String getUrl(int pageNum, int pageSize) {
 
-        public Body() {
-            channelList = new ArrayList<>(1);
+        //没有范围，直接请求
+        if (TextUtils.equals(hasRange, "0")) {
+            return String.format(url, pageSize);
         }
+        //0-20
+        return String.format(url, (pageNum + 1) * pageSize, pageNum * pageSize);
     }
 
-    public class Channel implements Serializable {
-        public String channelId = "";
-        public String name = "";
+    public boolean isEnable() {
+        return !TextUtils.equals(enable, "0");
     }
 }

@@ -23,10 +23,10 @@ public class NewsListFragment extends BaseFragment implements INewsView {
     private SwipeRefreshLayout mRefreshLayout;
     private RecyclerView mRecyclerView;
     private INewsPresenter mNewsPresenter;
-    private NewsChannelBean.Channel mChannel;
+    private NewsChannelBean mChannel;
     private NewsListAdapter mNewsListAdapter;
 
-    public static NewsListFragment newInstance(NewsChannelBean.Channel channel) {
+    public static NewsListFragment newInstance(NewsChannelBean channel) {
         NewsListFragment fragment = new NewsListFragment();
         Bundle data = new Bundle();
         data.putSerializable(CHANNEL, channel);
@@ -60,7 +60,7 @@ public class NewsListFragment extends BaseFragment implements INewsView {
     @Override
     public void onInitData() {
 
-        mChannel = (NewsChannelBean.Channel) getArguments().getSerializable(CHANNEL);
+        mChannel = (NewsChannelBean) getArguments().getSerializable(CHANNEL);
 
         mNewsListAdapter = new NewsListAdapter();
         //设置布局管理器
@@ -91,9 +91,9 @@ public class NewsListFragment extends BaseFragment implements INewsView {
     }
 
     @Override
-    public void onNewsLoad(NewsBean newsBean) {
+    public void onNewsLoad(List<NewsBean> newsBean) {
 
-        List<NewsBean.News> newsList = newsBean.showapi_res_body.pagebean.contentlist;
+        List<NewsBean> newsList = newsBean;
         mNewsListAdapter.setData(newsList);
     }
 

@@ -1,66 +1,34 @@
-{
-  "showapi_res_code": 0,
-  "showapi_res_error": "",
-  "showapi_res_body": {
-    "channelList": [
-      {
-        "channelId": "5572a108b3cdc86cf39001cd",
-        "name": "国内焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001ce",
-        "name": "国际焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001cf",
-        "name": "军事焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d0",
-        "name": "财经焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d1",
-        "name": "互联网焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d2",
-        "name": "房产焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d3",
-        "name": "汽车焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d4",
-        "name": "体育焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d5",
-        "name": "娱乐焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d6",
-        "name": "游戏焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d7",
-        "name": "教育焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d8",
-        "name": "女人焦点"
-      },
-      {
-        "channelId": "5572a108b3cdc86cf39001d9",
-        "name": "科技焦点"
-      },
-      {
-        "channelId": "5572a109b3cdc86cf39001da",
-        "name": "社会焦点"
-      }
-    ],
-    "ret_code": 0,
-    "totalNum": 44
+[
+  {
+    "url": "http://c.3g.163.com/nc/article/headline/T1348647853363/%s-%s.html",
+    "name": "头条",
+    "hasRange": "1"
+  },
+  {
+    "url": "http://c.3g.163.com/recommend/getSubDocPic?size=%s",
+    "name": "热点",
+    "hasRange": "0",
+    "enable": "0",
+    "description": "hasRange为0表示只有1个参数，直接传参数，没有范围。enable为0表示该栏目不显示。"
+  },
+  {
+    "url": "http://c.m.163.com/nc/article/list/T1348650593803/%s-%s.html",
+    "name": "时尚",
+    "hasRange": "1"
+  },
+  {
+    "url": "http://c.3g.163.com/nc/article/list/T1414389941036/%s-%s.html",
+    "name": "健康",
+    "hasRange": "1"
+  },
+  {
+    "url": "http://c.3g.163.com/nc/article/list/T1348648517839/%s-%s.html",
+    "name": "娱乐",
+    "hasRange": "1"
+  },
+  {
+    "url": "http://c.m.163.com/nc/article/list/T1348648756099/%s-%s.html",
+    "name": "财经",
+    "hasRange": "1"
   }
-}
+]

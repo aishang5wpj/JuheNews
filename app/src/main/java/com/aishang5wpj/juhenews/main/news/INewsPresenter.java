@@ -1,5 +1,7 @@
 package com.aishang5wpj.juhenews.main.news;
 
+import android.content.Context;
+
 import com.aishang5wpj.juhenews.bean.NewsChannelBean;
 
 /**
@@ -7,7 +9,7 @@ import com.aishang5wpj.juhenews.bean.NewsChannelBean;
  */
 public interface INewsPresenter {
 
-    void loadNews(NewsChannelBean.Channel channel, int page);
+    void loadNews(NewsChannelBean channel, int page);
 
-    void loadChannel();
+    void loadChannel(Context context);
 }

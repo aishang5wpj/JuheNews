@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyHolder> {
 
-    private List<NewsBean.News> mNewsList;
+    private List<NewsBean> mNewsList;
 
     public NewsListAdapter() {
 
@@ -35,10 +35,10 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyHold
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
 
-        NewsBean.News news = mNewsList.get(position);
+        NewsBean news = mNewsList.get(position);
         holder.titleTv.setText(news.title);
-        holder.descTv.setText(news.desc);
-        holder.iconIv.setImageURI(Uri.parse(news.getImageUrl()));
+        holder.descTv.setText(news.ltitle);
+        holder.iconIv.setImageURI(Uri.parse(news.imgsrc));
     }
 
     @Override
@@ -46,7 +46,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.MyHold
         return mNewsList == null ? 0 : mNewsList.size();
     }
 
-    public void setData(List<NewsBean.News> newsList) {
+    public void setData(List<NewsBean> newsList) {
         mNewsList = newsList;
         notifyDataSetChanged();
     }

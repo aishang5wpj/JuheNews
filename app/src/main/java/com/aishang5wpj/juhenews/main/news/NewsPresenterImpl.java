@@ -1,9 +1,11 @@
 package com.aishang5wpj.juhenews.main.news;
 
+import android.content.Context;
+
 import com.aishang5wpj.juhenews.bean.NewsBean;
 import com.aishang5wpj.juhenews.bean.NewsChannelBean;
-import com.aishang5wpj.juhenews.utils.FileUtils;
-import com.google.gson.Gson;
+
+import java.util.List;
 
 /**
  * Created by wpj on 16/5/17上午10:06.
@@ -29,20 +31,20 @@ public class NewsPresenterImpl implements INewsPresenter {
     }
 
     @Override
-    public void loadNews(NewsChannelBean.Channel channel, int page) {
+    public void loadNews(NewsChannelBean channel, int page) {
         if (null == mNewsView) {
             return;
         }
         mNewsView.showProgress();
         mNewsModel.loadNews(channel, page, new INewsModel.OnLoadNewsListener() {
             @Override
-            public void onLoadCompleted(final NewsBean newsBean) {
+            public void onLoadCompleted(final List<NewsBean> newsList) {
 
                 mNewsView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
-                        mNewsView.onNewsLoad(newsBean);
+                        mNewsView.onNewsLoad(newsList);
                         mNewsView.hideProgress();
                     }
                 });
@@ -51,28 +53,19 @@ public class NewsPresenterImpl implements INewsPresenter {
     }
 
     @Override
-    public void loadChannel() {
+    public void loadChannel(Context context) {
         if (null == mChannelView) {
             return;
         }
-
-        String result = FileUtils.readAssertsFile(mChannelView.getContext(), "channel.json");
-        NewsChannelBean newsChannelBean = new Gson().fromJson(result, NewsChannelBean.class);
-        mChannelView.onLoadChannelCompleted(newsChannelBean);
-
-        //从服务器拉去的新闻频道，请求新闻时好多都是302，是因为频繁请求被百度拒了？还是接口本身不可用了。
-        if (true) {
-            return;
-        }
-        mNewsModel.loadChannel(new INewsModel.OnLoadChannelListener() {
+        mNewsModel.loadChannel(context, new INewsModel.OnLoadChannelListener() {
             @Override
-            public void onLoadCompleted(final NewsChannelBean channelBean) {
+            public void onLoadCompleted(final List<NewsChannelBean> channelList) {
 
                 mChannelView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
-                        mChannelView.onLoadChannelCompleted(channelBean);
+                        mChannelView.onLoadChannelCompleted(channelList);
                     }
                 });
             }

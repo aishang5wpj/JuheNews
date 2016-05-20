@@ -1,6 +1,11 @@
 package com.aishang5wpj.juhenews.bean;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -8,64 +13,56 @@ import java.util.List;
  */
 public class NewsBean {
 
-    public String showapi_res_code = "";
-    public String showapi_res_error = "";
-    public Body showapi_res_body;
+    private static final String NEWS_DETAIL = "http://c.m.163.com/nc/article/%s/full.html";
 
-    public NewsBean() {
-        showapi_res_body = new Body();
-    }
+    public String ltitle;
+    public String digest;
+    public String docid;
+    public String title;
+    public String source;
+    public String imgsrc;
 
-    public class Body {
-        public String ret_code = "";
-        public Page pagebean;
+    public static List<NewsBean> parseNewsList(String result) {
 
-        public Body() {
-            pagebean = new Page();
-        }
-    }
+        List<NewsBean> newsList = new ArrayList<>(1);
+        try {
+            JSONObject jsonObject = new JSONObject(result);
+            for (Iterator<String> iterator = jsonObject.keys(); iterator.hasNext(); ) {
 
-    public class Page {
-        public String allNum = "";
-        public String allPages = "";
-        public String currentPage = "";
-        public String maxResult = "";
-        public List<News> contentlist;
-
-        public Page() {
-            contentlist = new ArrayList<>(1);
-        }
-    }
-
-    public class News {
-        public String channelId = "";
-        public String channelName = "";
-        public String content = "";
-        public String desc = "";
-        public String html = "";
-        public List<Image> imageurls;
-        public String link = "";
-        public String nid = "";
-        public String pubDate = "";//发表时间
-        public String sentiment_display = "";
-        public String source = "";//新闻来源
-        public String title = "";//
-
-        public News() {
-            imageurls = new ArrayList<>(1);
-        }
-
-        public String getImageUrl() {
-            if (null == imageurls || imageurls.size() <= 0) {
-                return "";
+                String key = iterator.next();
+                JSONArray jsonArray = jsonObject.getJSONArray(key);
+                int size = jsonArray.length();
+                for (int i = 0; i < size; i++) {
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    NewsBean newsBean = new NewsBean();
+                    newsBean.ltitle = object.getString("ltitle");
+                    newsBean.digest = object.getString("digest");
+                    newsBean.docid = object.getString("docid");
+                    newsBean.title = object.getString("title");
+                    newsBean.source = object.getString("source");
+                    newsBean.imgsrc = object.getString("imgsrc");
+                    newsList.add(newsBean);
+                }
             }
-            return imageurls.get(0).url;
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        return newsList;
     }
 
-    public class Image {
-        public String height = "";
-        public String url = "";
-        public String width = "";
+    public String getDetailUrl() {
+        return String.format(NEWS_DETAIL, docid);
+    }
+
+    public class AD {
+        public String title;
+        public String tag;
+        public String imgsrc;
+        public String subtitle;
+        public String url;
+    }
+
+    public class ImageExtra {
+        public String imgextra;
     }
 }

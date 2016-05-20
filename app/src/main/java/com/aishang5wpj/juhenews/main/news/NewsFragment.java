@@ -46,7 +46,7 @@ public class NewsFragment extends BaseFragment implements INewsChannelView {
         mTabLayout.setupWithViewPager(mViewPager);
 
         mNewsPresenter = new NewsPresenterImpl(this);
-        mNewsPresenter.loadChannel();
+        mNewsPresenter.loadChannel(getActivity());
     }
 
     @Override
@@ -55,15 +55,14 @@ public class NewsFragment extends BaseFragment implements INewsChannelView {
     }
 
     @Override
-    public void onLoadChannelCompleted(NewsChannelBean channelBean) {
+    public void onLoadChannelCompleted(List<NewsChannelBean> channelList) {
 
         mPagerAdpater.clear();
         mTabLayout.removeAllTabs();
 
         List<Fragment> fragmentList = new ArrayList<>();
         List<String> nameList = new ArrayList<>();
-        List<NewsChannelBean.Channel> channelList = channelBean.showapi_res_body.channelList;
-        for (NewsChannelBean.Channel channel : channelList) {
+        for (NewsChannelBean channel : channelList) {
 
             fragmentList.add(NewsListFragment.newInstance(channel));
             nameList.add(channel.name);

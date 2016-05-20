@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--match_parent：tab很多时，child的宽度被压缩；
+        wrap_content：tab很少时，布局无法填满屏幕的宽度-->
     <android.support.design.widget.TabLayout
         android:id="@+id/news_tab_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/theme_color"
         app:tabIndicatorColor="@color/white"

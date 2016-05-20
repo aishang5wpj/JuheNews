@@ -10,8 +10,8 @@
         android:id="@+id/news_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:background="@color/common_background"
+        android:paddingTop="5dp"
         app:tabIndicatorColor="@color/theme_color"
         app:tabSelectedTextColor="@color/theme_color"
         app:tabTextColor="@color/white"/>
