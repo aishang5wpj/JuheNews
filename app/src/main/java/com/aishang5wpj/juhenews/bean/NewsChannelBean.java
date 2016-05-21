@@ -15,18 +15,17 @@ public class NewsChannelBean implements Serializable {
     private String url;
 
     /**
-     * @param pageNum  从0开始
-     * @param pageSize
+     * @param startIndex 起始位置
+     * @param offset     加载条数
      * @return
      */
-    public String getUrl(int pageNum, int pageSize) {
+    public String getUrl(int startIndex, int offset) {
 
         //没有范围，直接请求
         if (TextUtils.equals(hasRange, "0")) {
-            return String.format(url, pageSize);
+            return String.format(url, offset);
         }
-        //0-20
-        return String.format(url, (pageNum + 1) * pageSize, pageNum * pageSize);
+        return String.format(url, startIndex, offset);
     }
 
     public boolean isEnable() {

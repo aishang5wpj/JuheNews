@@ -25,6 +25,8 @@ public class NewsListFragment extends BaseFragment implements INewsView {
     private INewsPresenter mNewsPresenter;
     private NewsChannelBean mChannel;
     private NewsListAdapter mNewsListAdapter;
+    private LinearLayoutManager mLayoutManager;
+    private int mPageIndex = 0;
 
     public static NewsListFragment newInstance(NewsChannelBean channel) {
         NewsListFragment fragment = new NewsListFragment();
@@ -52,7 +54,29 @@ public class NewsListFragment extends BaseFragment implements INewsView {
             @Override
             public void onRefresh() {
 
-                mNewsPresenter.loadNews(mChannel, 0);
+                mPageIndex = 0;
+                mNewsPresenter.loadNews(mChannel, mPageIndex);
+            }
+        });
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            private int lastVisibleItem;
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                lastVisibleItem = mLayoutManager.findLastVisibleItemPosition();
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        && lastVisibleItem + 1 == mNewsListAdapter.getItemCount()) {
+
+                    //加载更多
+                    mRefreshLayout.setRefreshing(true);
+                    mNewsPresenter.loadNews(mChannel, mPageIndex + 1);
+                }
             }
         });
     }
@@ -63,8 +87,15 @@ public class NewsListFragment extends BaseFragment implements INewsView {
         mChannel = (NewsChannelBean) getArguments().getSerializable(CHANNEL);
 
         mNewsListAdapter = new NewsListAdapter();
+        mNewsListAdapter.setOnItemClickListener(new NewsListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, NewsBean newsBean) {
+
+            }
+        });
         //设置布局管理器
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mLayoutManager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
         //设置adapter
         mRecyclerView.setAdapter(mNewsListAdapter);
         //设置Item增加、移除动画
@@ -72,7 +103,7 @@ public class NewsListFragment extends BaseFragment implements INewsView {
         mRecyclerView.setHasFixedSize(true);
 
         mNewsPresenter = new NewsPresenterImpl(this);
-        mNewsPresenter.loadNews(mChannel, 1);
+        mNewsPresenter.loadNews(mChannel, mPageIndex);
     }
 
     @Override
@@ -94,7 +125,15 @@ public class NewsListFragment extends BaseFragment implements INewsView {
     public void onNewsLoad(List<NewsBean> newsBean) {
 
         List<NewsBean> newsList = newsBean;
-        mNewsListAdapter.setData(newsList);
+        if (mPageIndex == 0) {
+
+            mNewsListAdapter.setData(newsList);
+        } else {
+
+            mNewsListAdapter.addData(newsList);
+        }
+        //加载成功才使page加1
+        mPageIndex++;
     }
 
     @Override

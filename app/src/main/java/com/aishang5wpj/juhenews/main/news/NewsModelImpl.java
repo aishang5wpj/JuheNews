@@ -57,7 +57,7 @@ public class NewsModelImpl implements INewsModel {
     @Override
     public void loadNews(NewsChannelBean channel, int page, final OnLoadNewsListener listener) {
 
-        String url = channel.getUrl(1, PAGE_SIZE);
+        String url = channel.getUrl(page * PAGE_SIZE, PAGE_SIZE);
         Request request = new Request.Builder().url(url).build();
         mOkHttpClient.newCall(request)
                 .enqueue(new Callback() {
