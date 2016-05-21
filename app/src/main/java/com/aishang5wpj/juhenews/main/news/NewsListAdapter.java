@@ -57,13 +57,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int position) {
 
         NewsBean news = mNewsList.get(position);
 
         if (viewHolder instanceof HolderPic1) {
 
-            HolderPic1 holder = (HolderPic1) viewHolder;
+            final HolderPic1 holder = (HolderPic1) viewHolder;
             holder.titleTv.setText(news.title);
             holder.descTv.setText(news.ltitle);
             holder.iconIv.setImageURI(Uri.parse(news.imgsrc));
@@ -71,21 +71,21 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 @Override
                 public void onClick(View v) {
                     if (null != mOnItemClickListener) {
-                        mOnItemClickListener.onItemClick(position, mNewsList.get(position));
+                        mOnItemClickListener.onItemClick(holder.rootLayout, position, mNewsList.get(position));
                     }
                 }
             });
         } else if (viewHolder instanceof HolderPic2) {
 
-            HolderPic2 holder = (HolderPic2) viewHolder;
+            final HolderPic2 holder = (HolderPic2) viewHolder;
             holder.titleTv.setText(news.title);
-            holder.iconIv1.setImageURI(Uri.parse(news.imgextra.get(0).imgsrc));
+            holder.iconIv.setImageURI(Uri.parse(news.imgextra.get(0).imgsrc));
             holder.iconIv2.setImageURI(Uri.parse(news.imgextra.get(1).imgsrc));
             holder.rootLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (null != mOnItemClickListener) {
-                        mOnItemClickListener.onItemClick(position, mNewsList.get(position));
+                        mOnItemClickListener.onItemClick(holder.rootLayout, position, mNewsList.get(position));
                     }
                 }
             });
@@ -114,7 +114,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public interface OnItemClickListener {
-        void onItemClick(int position, NewsBean newsBean);
+        void onItemClick(View view, int position, NewsBean newsBean);
     }
 
     class HolderPic1 extends RecyclerView.ViewHolder {
@@ -134,14 +134,14 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     class HolderPic2 extends RecyclerView.ViewHolder {
 
-        SimpleDraweeView iconIv1, iconIv2;
+        SimpleDraweeView iconIv, iconIv2;
         TextView titleTv;
         ViewGroup rootLayout;
 
         public HolderPic2(View itemView) {
             super(itemView);
             rootLayout = (ViewGroup) itemView.findViewById(R.id.news_item_layout);
-            iconIv1 = (SimpleDraweeView) itemView.findViewById(R.id.news_item_icon_iv_1);
+            iconIv = (SimpleDraweeView) itemView.findViewById(R.id.news_item_icon_iv);
             iconIv2 = (SimpleDraweeView) itemView.findViewById(R.id.news_item_icon_iv_2);
             titleTv = (TextView) itemView.findViewById(R.id.news_item_title_tv);
         }

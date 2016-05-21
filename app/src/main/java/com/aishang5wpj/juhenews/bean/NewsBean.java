@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by wpj on 16/5/17上午10:27.
  */
-public class NewsBean {
+public class NewsBean implements Serializable {
 
     private static final String NEWS_DETAIL = "http://c.m.163.com/nc/article/%s/full.html";
 
@@ -75,15 +76,7 @@ public class NewsBean {
         return String.format(NEWS_DETAIL, docid);
     }
 
-    public static class ImageExtra {
+    public static class ImageExtra implements Serializable {
         public String imgsrc;
-    }
-
-    public class AD {
-        public String title;
-        public String tag;
-        public String imgsrc;
-        public String subtitle;
-        public String url;
     }
 }

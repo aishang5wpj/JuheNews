@@ -31,4 +31,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.+'
     compile project(':SwipebackLayout')
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'org.sufficientlysecure:html-textview:1.3'
 }

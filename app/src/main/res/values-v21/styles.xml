@@ -15,5 +15,7 @@
         <item name="android:windowNoTitle">true</item>
         <!-- 使用 API Level 22 編譯的話，要拿掉前綴字 -->
         <item name="windowNoTitle">true</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
+
 </resources>

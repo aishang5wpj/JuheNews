@@ -1,6 +1,9 @@
 package com.aishang5wpj.juhenews.main.news;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +14,7 @@ import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseFragment;
 import com.aishang5wpj.juhenews.bean.NewsBean;
 import com.aishang5wpj.juhenews.bean.NewsChannelBean;
+import com.aishang5wpj.juhenews.main.news.newsdetail.NewsDetailActivity;
 
 import java.util.List;
 
@@ -75,7 +79,7 @@ public class NewsListFragment extends BaseFragment implements INewsView {
 
                     //加载更多
                     mRefreshLayout.setRefreshing(true);
-                    mNewsPresenter.loadNews(mChannel, mPageIndex + 1);
+                    mNewsPresenter.loadNews(mChannel, mPageIndex);
                 }
             }
         });
@@ -89,8 +93,17 @@ public class NewsListFragment extends BaseFragment implements INewsView {
         mNewsListAdapter = new NewsListAdapter();
         mNewsListAdapter.setOnItemClickListener(new NewsListAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int position, NewsBean newsBean) {
+            public void onItemClick(View view, int position, NewsBean newsBean) {
 
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+                intent.putExtra(NewsDetailActivity.NEWS_BEAN, newsBean);
+
+                //http://blog.csdn.net/ljx19900116/article/details/41806889
+                View transitionView = view.findViewById(R.id.news_item_icon_iv);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        getActivity(), transitionView, getString(R.string.transition_news_img));
+
+                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
             }
         });
         //设置布局管理器

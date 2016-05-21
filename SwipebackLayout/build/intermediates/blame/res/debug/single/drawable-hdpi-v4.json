@@ -84,12 +84,12 @@
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
-        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png",
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png",
@@ -148,11 +148,11 @@
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_ic_search_api_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
-        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_popup_background_mtrl_mult.9.png",
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
+        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-hdpi/abc_btn_switch_to_on_mtrl_00001.9.png"
     }
 ]

@@ -19,4 +19,5 @@
 
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="transition_news_img">transition_news_img</string>
 </resources>

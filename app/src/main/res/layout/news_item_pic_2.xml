@@ -36,7 +36,7 @@
             android:orientation="horizontal">
 
             <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/news_item_icon_iv_1"
+                android:id="@+id/news_item_icon_iv"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="10dp"

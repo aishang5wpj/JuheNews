@@ -13,4 +13,5 @@
     <color name="text_tips">@color/color_999</color>
     <color name="common_background">#f3f3f3</color>
     <color name="diver">#eeeeee</color>
+    <color name="transparent">#00000000</color>
 </resources>
