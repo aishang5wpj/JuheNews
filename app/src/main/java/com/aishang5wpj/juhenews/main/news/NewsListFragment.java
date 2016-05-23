@@ -154,6 +154,9 @@ public class NewsListFragment extends BaseFragment implements INewsView {
 
     @Override
     public void runOnUiThread(Runnable runnable) {
+        if (null == getActivity()) {
+            return;
+        }
         getActivity().runOnUiThread(runnable);
     }
 }

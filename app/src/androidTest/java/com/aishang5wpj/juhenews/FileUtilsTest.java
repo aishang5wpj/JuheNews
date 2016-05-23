@@ -13,7 +13,7 @@ public class FileUtilsTest extends AndroidTestCase {
     public void testAndroidTestCaseSetupProperly() {
         super.testAndroidTestCaseSetupProperly();
 
-        String result = FileUtils.readAssertsFile(mContext, "channel.json");
+        String result = FileUtils.readAssertsFile(mContext, "newsChannel.json");
         assertNotNull(result);
         result = FileUtils.readAssertsFile(mContext, "test/test.json");
         assertNotNull(result);

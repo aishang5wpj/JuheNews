@@ -30,6 +30,9 @@
             android:theme="@style/AppTheme.NoActionBar.Translucent">
 
         </activity>
+        <activity android:name=".main.picture.PictureDetailActivity">
+
+        </activity>
     </application>
 
 </manifest>

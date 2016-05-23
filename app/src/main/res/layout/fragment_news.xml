@@ -17,7 +17,7 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/news_viewpager"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/news_tab_layout"
         android:background="@color/white"/>
