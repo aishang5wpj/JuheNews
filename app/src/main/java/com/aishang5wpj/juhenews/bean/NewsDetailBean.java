@@ -2,16 +2,19 @@ package com.aishang5wpj.juhenews.bean;
 
 import com.aishang5wpj.juhenews.utils.JsonUtil;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by wpj on 16/5/21下午4:15.
  */
-public class NewsDetailBean {
+public class NewsDetailBean implements Serializable {
     /**
      * docid
      */
@@ -39,7 +42,7 @@ public class NewsDetailBean {
     /**
      * 图片列表
      */
-    public List<String> imgList;
+    public List<Img> img;
 
     public static NewsDetailBean parseNewsDetail(String content) {
 
@@ -57,6 +60,24 @@ public class NewsDetailBean {
                 detailBean.body = JsonUtil.getValue(object, "body");
                 detailBean.ptime = JsonUtil.getValue(object, "ptime");
                 detailBean.cover = JsonUtil.getValue(object, "cover");
+                if (JsonUtil.hasValue(object, "img")) {
+                    detailBean.img = new ArrayList<>();
+                    JSONArray array = JsonUtil.getArray(object, "img");
+                    if (null != array) {
+                        int size = array.length();
+                        for (int i = 0; i < size; i++) {
+
+                            JSONObject temp = array.getJSONObject(i);
+
+                            Img img = new Img();
+                            img.alt = JsonUtil.getValue(temp, "alt");
+                            img.pixel = JsonUtil.getValue(temp, "pixel");
+                            img.ref = JsonUtil.getValue(temp, "ref");
+                            img.src = JsonUtil.getValue(temp, "src");
+                            detailBean.img.add(img);
+                        }
+                    }
+                }
 
                 return detailBean;
             }
@@ -64,5 +85,16 @@ public class NewsDetailBean {
             e.printStackTrace();
         }
         return detailBean;
+    }
+
+    public boolean hasImageList() {
+        return img != null && img.size() > 0;
+    }
+
+    public static class Img implements Serializable {
+        public String ref;
+        public String pixel;
+        public String alt;
+        public String src;
     }
 }

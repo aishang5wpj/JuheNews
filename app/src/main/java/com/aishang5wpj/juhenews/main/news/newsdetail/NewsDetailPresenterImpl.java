@@ -21,6 +21,19 @@ public class NewsDetailPresenterImpl implements INewsDetailPresenter {
 
         mDetailView.showProgress();
         mDetailModel.loadNewsDetail(newsBean, new INewsDetailModel.OnNewsDetailLoadListener() {
+
+            @Override
+            public void onLoadFailed() {
+                mDetailView.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        mDetailView.hideProgress();
+                        mDetailView.showMessage("加载失败");
+                    }
+                });
+            }
+
             @Override
             public void onLoadComplete(final NewsDetailBean detailBean) {
 

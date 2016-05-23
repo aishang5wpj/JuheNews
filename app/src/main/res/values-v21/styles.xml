@@ -13,6 +13,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <!--Navigation bar color-->
         <item name="android:navigationBarColor">@color/accent_material_light</item>
     </style>

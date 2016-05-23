@@ -1,8 +1,10 @@
 package com.aishang5wpj.juhenews.main.news.newsdetail;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -15,6 +17,8 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 
+import java.io.Serializable;
+
 /**
  * Created by wpj on 16/5/20下午6:31.
  */
@@ -25,8 +29,9 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
     private HtmlTextView mHtmlTextView;
     private Toolbar mToolbar;
     private ProgressBar mProgressBar;
-    private SimpleDraweeView mImageView;
+    private SimpleDraweeView mSimpleDraweeView;
     private INewsDetailPresenter mDetailPresenter;
+    private NewsDetailBean mNewsDetailBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,13 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
         mHtmlTextView = (HtmlTextView) findViewById(R.id.news_detail_tv);
         mToolbar = (Toolbar) findViewById(R.id.news_detail_tb);
         mProgressBar = (ProgressBar) findViewById(R.id.news_detail_pb);
-        mImageView = (SimpleDraweeView) findViewById(R.id.news_detail_iv);
+        mSimpleDraweeView = (SimpleDraweeView) findViewById(R.id.news_detail_iv);
     }
 
     @Override
     public void onInitListeners() {
 
+        mSimpleDraweeView.setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +58,7 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //先设置actionbar，再设置clicklistener
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +68,7 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
 
         mNewsBean = (NewsBean) getIntent().getSerializableExtra(NEWS_BEAN);
         mToolbar.setTitle(mNewsBean.title);
-        mImageView.setImageURI(Uri.parse(mNewsBean.imgsrc));
+        mSimpleDraweeView.setImageURI(Uri.parse(mNewsBean.imgsrc));
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.news_detail_ctl);
         collapsingToolbar.setTitle(mNewsBean.title);
@@ -73,6 +80,22 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
     @Override
     public void onClick(View v) {
 
+        switch (v.getId()) {
+            case R.id.news_detail_iv:
+
+                if (null != mNewsDetailBean && mNewsDetailBean.hasImageList()) {
+                    Intent intent = new Intent(this, NewsDetailImagesActivity.class);
+                    intent.putExtra(NewsDetailImagesActivity.IMAGE_LIST, (Serializable) mNewsDetailBean.img);
+                    startActivity(intent);
+                }
+
+                break;
+        }
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        Snackbar.make(getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
@@ -89,6 +112,7 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
     @Override
     public void onNewsDetailLoadListener(NewsDetailBean newsDetailBean) {
 
+        mNewsDetailBean = newsDetailBean;
         mHtmlTextView.setHtmlFromString(newsDetailBean.body, new HtmlTextView.LocalImageGetter());
     }
 }

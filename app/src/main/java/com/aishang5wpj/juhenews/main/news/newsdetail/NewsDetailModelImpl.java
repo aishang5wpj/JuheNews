@@ -32,7 +32,9 @@ public class NewsDetailModelImpl implements INewsDetailModel {
 
                     @Override
                     public void onFailure(Call call, IOException e) {
-
+                        if (null != loadListener) {
+                            loadListener.onLoadFailed();
+                        }
                     }
 
                     @Override

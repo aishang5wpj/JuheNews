@@ -25,6 +25,11 @@
             android:label="新闻详情"
             android:theme="@style/AppTheme.NoActionBar.Translucent">
         </activity>
+        <activity
+            android:name=".main.news.newsdetail.NewsDetailImagesActivity"
+            android:theme="@style/AppTheme.NoActionBar.Translucent">
+
+        </activity>
     </application>
 
 </manifest>

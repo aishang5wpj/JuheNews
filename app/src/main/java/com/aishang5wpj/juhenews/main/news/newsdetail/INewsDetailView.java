@@ -7,6 +7,8 @@ import com.aishang5wpj.juhenews.bean.NewsDetailBean;
  */
 public interface INewsDetailView {
 
+    void showMessage(String msg);
+
     void runOnUiThread(Runnable runnable);
 
     void showProgress();

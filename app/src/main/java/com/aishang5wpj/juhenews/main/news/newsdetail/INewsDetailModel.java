@@ -12,5 +12,7 @@ public interface INewsDetailModel {
 
     interface OnNewsDetailLoadListener {
         void onLoadComplete(NewsDetailBean detailBean);
+
+        void onLoadFailed();
     }
 }
