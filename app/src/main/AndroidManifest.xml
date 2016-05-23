@@ -22,7 +22,8 @@
         </activity>
         <activity
             android:name=".main.news.newsdetail.NewsDetailActivity"
-            android:label="新闻详情">
+            android:label="新闻详情"
+            android:theme="@style/AppTheme.NoActionBar.Translucent">
         </activity>
     </application>
 

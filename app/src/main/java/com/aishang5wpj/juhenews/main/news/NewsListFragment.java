@@ -2,8 +2,6 @@ package com.aishang5wpj.juhenews.main.news;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -97,13 +95,18 @@ public class NewsListFragment extends BaseFragment implements INewsView {
 
                 Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 intent.putExtra(NewsDetailActivity.NEWS_BEAN, newsBean);
+                startActivity(intent);
+
+                //使用下面的图片，SimpleDraweeView加载网络图片显示不出来：
+                //1、使用fresco，不使用ActivityCompat.startActivity
+                //2、使用ImageView，不使用fresco，则可以使用ActivityCompat.startActivity
 
                 //http://blog.csdn.net/ljx19900116/article/details/41806889
-                View transitionView = view.findViewById(R.id.news_item_icon_iv);
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        getActivity(), transitionView, getString(R.string.transition_news_img));
-
-                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+//                View transitionView = view.findViewById(R.id.news_item_icon_iv);
+//                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                        getActivity(), transitionView, getString(R.string.transition_news_img));
+//
+//                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
             }
         });
         //设置布局管理器

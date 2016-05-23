@@ -2,6 +2,7 @@ package com.aishang5wpj.juhenews.main.news.newsdetail;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -24,7 +25,7 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
     private HtmlTextView mHtmlTextView;
     private Toolbar mToolbar;
     private ProgressBar mProgressBar;
-    private SimpleDraweeView mSimpleDraweeView;
+    private SimpleDraweeView mImageView;
     private INewsDetailPresenter mDetailPresenter;
 
     @Override
@@ -38,7 +39,7 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
         mHtmlTextView = (HtmlTextView) findViewById(R.id.news_detail_tv);
         mToolbar = (Toolbar) findViewById(R.id.news_detail_tb);
         mProgressBar = (ProgressBar) findViewById(R.id.news_detail_pb);
-        mSimpleDraweeView = (SimpleDraweeView) findViewById(R.id.news_detail_iv);
+        mImageView = (SimpleDraweeView) findViewById(R.id.news_detail_iv);
     }
 
     @Override
@@ -60,7 +61,10 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
 
         mNewsBean = (NewsBean) getIntent().getSerializableExtra(NEWS_BEAN);
         mToolbar.setTitle(mNewsBean.title);
-        mSimpleDraweeView.setImageURI(Uri.parse(mNewsBean.imgsrc));
+        mImageView.setImageURI(Uri.parse(mNewsBean.imgsrc));
+
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.news_detail_ctl);
+        collapsingToolbar.setTitle(mNewsBean.title);
 
         mDetailPresenter = new NewsDetailPresenterImpl(this);
         mDetailPresenter.loadNewsDetail(mNewsBean);
