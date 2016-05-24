@@ -2,8 +2,6 @@ package com.aishang5wpj.juhenews.app;
 
 import android.app.Application;
 
-import com.facebook.drawee.backends.pipeline.Fresco;
-
 import java.io.File;
 
 public class MyApplication extends Application {
@@ -21,7 +19,5 @@ public class MyApplication extends Application {
         if (!ROOT_PATH.endsWith(File.separator)) {
             ROOT_PATH += File.separator;
         }
-
-        Fresco.initialize(this);
     }
 }

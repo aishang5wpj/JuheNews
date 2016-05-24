@@ -40,12 +40,12 @@
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_btn_borderless_material.xml"
     },
     {
-        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/androidTest/debug/drawable/abc_list_selector_holo_light.xml",
-        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_list_selector_holo_light.xml"
-    },
-    {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/androidTest/debug/drawable/abc_spinner_textfield_background_material.xml",
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/androidTest/debug/drawable/abc_list_selector_holo_light.xml",
+        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable/abc_list_selector_holo_light.xml"
     },
     {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/androidTest/debug/drawable/abc_btn_check_material.xml",

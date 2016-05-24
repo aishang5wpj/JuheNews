@@ -12,12 +12,12 @@
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-xxhdpi/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/release/drawable-xxhdpi-v4/abc_list_focused_holo.9.png",
-        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-xxhdpi/abc_list_focused_holo.9.png"
-    },
-    {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/release/drawable-xxhdpi-v4/abc_cab_background_top_mtrl_alpha.9.png",
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-xxhdpi/abc_cab_background_top_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/release/drawable-xxhdpi-v4/abc_list_focused_holo.9.png",
+        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/drawable-xxhdpi/abc_list_focused_holo.9.png"
     },
     {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/release/drawable-xxhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png",

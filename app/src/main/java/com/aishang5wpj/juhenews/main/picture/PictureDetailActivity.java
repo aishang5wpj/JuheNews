@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseActivity;
 import com.aishang5wpj.juhenews.bean.PictureBean;
-import com.aishang5wpj.juhenews.utils.ImageUtils;
+import com.aishang5wpj.juhenews.glide.ImageUtils;
 
 /**
  * Created by wpj on 16/5/23下午5:14.

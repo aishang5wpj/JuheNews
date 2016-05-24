@@ -124,12 +124,12 @@
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_expanded_menu_layout.xml"
     },
     {
-        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/layout/swipeback_layout.xml",
-        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/src/main/res/layout/swipeback_layout.xml"
-    },
-    {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/layout/swipeback_layout.xml",
+        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/src/main/res/layout/swipeback_layout.xml"
     },
     {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",

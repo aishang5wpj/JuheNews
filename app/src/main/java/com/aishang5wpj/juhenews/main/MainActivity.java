@@ -10,10 +10,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseActivity;
 import com.aishang5wpj.juhenews.app.BaseFragment;
+import com.aishang5wpj.juhenews.glide.ImageUtils;
 import com.aishang5wpj.juhenews.main.about.AboutFragment;
 import com.aishang5wpj.juhenews.main.joke.JokeFragment;
 import com.aishang5wpj.juhenews.main.menu.MenuFragment;
@@ -33,6 +36,7 @@ public class MainActivity extends BaseActivity {
     private DrawerLayout mDrawerLayout;
     private Map<String, BaseFragment> mFragmentMap;
     private String mLastFragmentName;
+    private ImageView mLogoIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,9 @@ public class MainActivity extends BaseActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.main_drawer_layout);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationView = (NavigationView) findViewById(R.id.main_menu_navigation);
+
+        LinearLayout headerLayout = (LinearLayout) mNavigationView.getHeaderView(0);
+        mLogoIv = (ImageView) headerLayout.getChildAt(0);
     }
 
     @Override
@@ -66,6 +73,8 @@ public class MainActivity extends BaseActivity {
     public void onInitData() {
         disableSwipeback();
         setSupportActionBar(mToolbar);
+
+        ImageUtils.getInstance().displayCircleImg(mLogoIv, R.mipmap.ftm);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.drawer_open,
                 R.string.drawer_close);

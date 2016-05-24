@@ -1,4 +1,4 @@
-package com.aishang5wpj.juhenews.utils;
+package com.aishang5wpj.juhenews.glide;
 
 import android.widget.ImageView;
 
@@ -9,6 +9,9 @@ import com.bumptech.glide.Glide;
 /**
  * Created by wpj on 16/5/24上午9:31.
  * http://blog.csdn.net/shangmingchao/article/details/51125554
+ * 这里不得不强调下Glide的一个强大的功能，当你在With后面的传Activity或者Fragment，
+ * Glide就可以根据当前Activity或者Fragment的生命周期维护图片的生命周期，
+ * 比如但activity销毁的时候，就会自动取消需要加载的图片
  */
 public class ImageUtils {
 
@@ -38,11 +41,27 @@ public class ImageUtils {
             request.error(errorImg);
         }
         request
-                .thumbnail(0.5f)//缩略图和大图的比例系数，如果缩略图先被加载出来则先显示缩略图
+                //用原图的1/10作为缩略图，如果缩略图先被加载出来则先显示缩略图
+                .thumbnail(0.1f)
                 .fitCenter()
 //                .centerCrop()
                 .crossFade()
-                .dontAnimate()//解决加载出来的瞬间闪一下的问题
+                //解决加载出来的瞬间闪一下的问题
+                .dontAnimate()
+                .into(imageView);
+    }
+
+    /*
+    *
+    * http://www.apkbus.com/forum.php?mod=viewthread&tid=245257
+    * */
+    public void displayCircleImg(ImageView imageView, int resId) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Glide.with(imageView.getContext())
+                .load(resId)
+                .transform(new GlideCircleTransform(imageView.getContext()))
                 .into(imageView);
     }
 

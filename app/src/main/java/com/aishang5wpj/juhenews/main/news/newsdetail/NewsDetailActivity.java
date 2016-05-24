@@ -13,7 +13,7 @@ import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseActivity;
 import com.aishang5wpj.juhenews.bean.NewsBean;
 import com.aishang5wpj.juhenews.bean.NewsDetailBean;
-import com.aishang5wpj.juhenews.utils.ImageUtils;
+import com.aishang5wpj.juhenews.glide.ImageUtils;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 
