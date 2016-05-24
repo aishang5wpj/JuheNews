@@ -1,6 +1,5 @@
 package com.aishang5wpj.juhenews.main.news.newsdetail;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -10,8 +9,7 @@ import android.widget.ImageView;
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseActivity;
 import com.aishang5wpj.juhenews.bean.NewsDetailBean;
-import com.aishang5wpj.juhenews.utils.Utils;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.aishang5wpj.juhenews.utils.ImageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,20 +57,15 @@ public class NewsDetailImagesActivity extends BaseActivity {
 
         mImgList = (List<NewsDetailBean.Img>) getIntent().getSerializableExtra(IMAGE_LIST);
 
-        List<SimpleDraweeView> simpleDraweeViews = new ArrayList<>();
+        List<ImageView> imageViewList = new ArrayList<>();
         for (NewsDetailBean.Img img : mImgList) {
 
-            SimpleDraweeView simpleDraweeView = new SimpleDraweeView(this);
-            simpleDraweeView.setImageURI(Uri.parse(img.src));
-            simpleDraweeView.getHierarchy().setPlaceholderImage(R.mipmap.ic_photo_size_select_actual_white_24dp);
-            simpleDraweeView.getHierarchy().setFailureImage(
-                    Utils.getDrawable(this, R.mipmap.ic_photo_size_select_actual_white_24dp));
-            simpleDraweeView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-            simpleDraweeView.setOnClickListener(this);
-            simpleDraweeViews.add(simpleDraweeView);
+            ImageView imageView = new ImageView(this);
+            ImageUtils.getInstance().display(imageView, img.src);
+            imageViewList.add(imageView);
         }
 
-        NewsDetailImagesAdapter adapter = new NewsDetailImagesAdapter(simpleDraweeViews);
+        NewsDetailImagesAdapter adapter = new NewsDetailImagesAdapter(imageViewList);
         mViewPager.setAdapter(adapter);
     }
 

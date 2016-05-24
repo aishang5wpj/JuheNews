@@ -1,15 +1,15 @@
 package com.aishang5wpj.juhenews.main.news;
 
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.bean.NewsBean;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.aishang5wpj.juhenews.utils.ImageUtils;
 
 import java.util.List;
 
@@ -66,7 +66,8 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             final HolderPic1 holder = (HolderPic1) viewHolder;
             holder.titleTv.setText(news.title);
             holder.descTv.setText(news.ltitle);
-            holder.iconIv.setImageURI(Uri.parse(news.imgsrc));
+            //load image
+            ImageUtils.getInstance().display(holder.iconIv, news.imgsrc);
             holder.rootLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -79,8 +80,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             final HolderPic2 holder = (HolderPic2) viewHolder;
             holder.titleTv.setText(news.title);
-            holder.iconIv.setImageURI(Uri.parse(news.imgextra.get(0).imgsrc));
-            holder.iconIv2.setImageURI(Uri.parse(news.imgextra.get(1).imgsrc));
+            //load image
+            ImageUtils.getInstance().display(holder.iconIv, news.imgextra.get(0).imgsrc);
+            ImageUtils.getInstance().display(holder.iconIv2, news.imgextra.get(1).imgsrc);
             holder.rootLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -119,14 +121,14 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     class HolderPic1 extends RecyclerView.ViewHolder {
 
-        SimpleDraweeView iconIv;
+        ImageView iconIv;
         TextView titleTv, descTv;
         ViewGroup rootLayout;
 
         public HolderPic1(View itemView) {
             super(itemView);
             rootLayout = (ViewGroup) itemView.findViewById(R.id.news_item_layout);
-            iconIv = (SimpleDraweeView) itemView.findViewById(R.id.news_item_icon_iv);
+            iconIv = (ImageView) itemView.findViewById(R.id.news_item_icon_iv);
             titleTv = (TextView) itemView.findViewById(R.id.news_item_title_tv);
             descTv = (TextView) itemView.findViewById(R.id.news_item_desc_tv);
         }
@@ -134,15 +136,15 @@ public class NewsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     class HolderPic2 extends RecyclerView.ViewHolder {
 
-        SimpleDraweeView iconIv, iconIv2;
+        ImageView iconIv, iconIv2;
         TextView titleTv;
         ViewGroup rootLayout;
 
         public HolderPic2(View itemView) {
             super(itemView);
             rootLayout = (ViewGroup) itemView.findViewById(R.id.news_item_layout);
-            iconIv = (SimpleDraweeView) itemView.findViewById(R.id.news_item_icon_iv);
-            iconIv2 = (SimpleDraweeView) itemView.findViewById(R.id.news_item_icon_iv_2);
+            iconIv = (ImageView) itemView.findViewById(R.id.news_item_icon_iv);
+            iconIv2 = (ImageView) itemView.findViewById(R.id.news_item_icon_iv_2);
             titleTv = (TextView) itemView.findViewById(R.id.news_item_title_tv);
         }
     }

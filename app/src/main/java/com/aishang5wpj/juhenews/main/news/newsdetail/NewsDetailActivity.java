@@ -1,19 +1,19 @@
 package com.aishang5wpj.juhenews.main.news.newsdetail;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseActivity;
 import com.aishang5wpj.juhenews.bean.NewsBean;
 import com.aishang5wpj.juhenews.bean.NewsDetailBean;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.aishang5wpj.juhenews.utils.ImageUtils;
 
 import org.sufficientlysecure.htmltextview.HtmlTextView;
 
@@ -29,7 +29,7 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
     private HtmlTextView mHtmlTextView;
     private Toolbar mToolbar;
     private ProgressBar mProgressBar;
-    private SimpleDraweeView mSimpleDraweeView;
+    private ImageView mImageView;
     private INewsDetailPresenter mDetailPresenter;
     private NewsDetailBean mNewsDetailBean;
 
@@ -44,13 +44,13 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
         mHtmlTextView = (HtmlTextView) findViewById(R.id.news_detail_tv);
         mToolbar = (Toolbar) findViewById(R.id.news_detail_tb);
         mProgressBar = (ProgressBar) findViewById(R.id.news_detail_pb);
-        mSimpleDraweeView = (SimpleDraweeView) findViewById(R.id.news_detail_iv);
+        mImageView = (ImageView) findViewById(R.id.news_detail_iv);
     }
 
     @Override
     public void onInitListeners() {
 
-        mSimpleDraweeView.setOnClickListener(this);
+        mImageView.setOnClickListener(this);
     }
 
     @Override
@@ -68,7 +68,8 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
 
         mNewsBean = (NewsBean) getIntent().getSerializableExtra(NEWS_BEAN);
         mToolbar.setTitle(mNewsBean.title);
-        mSimpleDraweeView.setImageURI(Uri.parse(mNewsBean.imgsrc));
+
+        ImageUtils.getInstance().display(mImageView, mNewsBean.imgsrc);
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.news_detail_ctl);
         collapsingToolbar.setTitle(mNewsBean.title);

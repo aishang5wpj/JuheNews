@@ -1,17 +1,17 @@
 package com.aishang5wpj.juhenews.main.picture;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.bean.PictureBean;
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.aishang5wpj.juhenews.utils.ImageUtils;
 
 import java.util.List;
 
@@ -44,12 +44,8 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         final PictureBean.Picture picture = mPictureList.get(position);
 
         PictureHolder pictureHolder = (PictureHolder) holder;
-
         pictureHolder.mTitleTv.setText(picture.title);
-        //SimpleDraweView不支持在xml文件中将宽、高设置成wrap_content，所以需要设置宽高比来使其正常显示
-        //否则宽高始终为0
-        pictureHolder.mSimpleDraweeView.setAspectRatio(1f);
-        pictureHolder.mSimpleDraweeView.setImageURI(Uri.parse(picture.getUrl()));
+        ImageUtils.getInstance().display(pictureHolder.mImageView, picture.getUrl());
         pictureHolder.mRootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,13 +90,13 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         TextView mTitleTv;
         ViewGroup mRootLayout;
-        SimpleDraweeView mSimpleDraweeView;
+        ImageView mImageView;
 
         public PictureHolder(View itemView) {
             super(itemView);
             mTitleTv = (TextView) itemView.findViewById(R.id.picture_item_title_tv);
             mRootLayout = (ViewGroup) itemView.findViewById(R.id.picture_item_layout);
-            mSimpleDraweeView = (SimpleDraweeView) itemView.findViewById(R.id.picture_item_icon_iv);
+            mImageView = (ImageView) itemView.findViewById(R.id.picture_item_icon_iv);
         }
     }
 }

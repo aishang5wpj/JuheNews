@@ -3,8 +3,7 @@ package com.aishang5wpj.juhenews.main.news.newsdetail;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.facebook.drawee.view.SimpleDraweeView;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -13,9 +12,9 @@ import java.util.List;
  */
 public class NewsDetailImagesAdapter extends PagerAdapter {
 
-    private List<SimpleDraweeView> mSimpleDraweeViews;
+    private List<ImageView> mSimpleDraweeViews;
 
-    public NewsDetailImagesAdapter(List<SimpleDraweeView> simpleDraweeViews) {
+    public NewsDetailImagesAdapter(List<ImageView> simpleDraweeViews) {
         mSimpleDraweeViews = simpleDraweeViews;
     }
 
