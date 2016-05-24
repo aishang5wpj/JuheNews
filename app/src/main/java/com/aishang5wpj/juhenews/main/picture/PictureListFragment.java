@@ -106,7 +106,7 @@ public class PictureListFragment extends BaseFragment implements IPictureView {
             public void onItemClick(PictureBean.Picture picture) {
 
                 Intent intent = new Intent(getActivity(), PictureDetailActivity.class);
-                intent.putExtra(PictureDetailActivity.PICTURE, picture);
+                intent.putExtra(PictureDetailActivity.PICTURE_URL, picture.getUrl());
                 startActivity(intent);
             }
         });

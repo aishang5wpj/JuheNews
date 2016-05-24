@@ -8,10 +8,9 @@ import com.bumptech.glide.Glide;
 
 /**
  * Created by wpj on 16/5/24上午9:31.
- * http://blog.csdn.net/shangmingchao/article/details/51125554
- * 这里不得不强调下Glide的一个强大的功能，当你在With后面的传Activity或者Fragment，
- * Glide就可以根据当前Activity或者Fragment的生命周期维护图片的生命周期，
- * 比如但activity销毁的时候，就会自动取消需要加载的图片
+ * <p/>
+ * * http://blog.csdn.net/shangmingchao/article/details/51125554
+ * http://www.jianshu.com/p/31c82862ef19
  */
 public class ImageUtils {
 
@@ -29,6 +28,16 @@ public class ImageUtils {
                 , R.mipmap.ic_photo_size_select_actual_white_24dp);
     }
 
+    /**
+     * 这里不得不强调下Glide的一个强大的功能，当你在With后面的传Activity或者Fragment，
+     * Glide就可以根据当前Activity或者Fragment的生命周期维护图片的生命周期，
+     * 比如但activity销毁的时候，就会自动取消需要加载的图片
+     *
+     * @param imageView
+     * @param url
+     * @param loadingImg
+     * @param errorImg
+     */
     public void display(ImageView imageView, String url, int loadingImg, int errorImg) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");

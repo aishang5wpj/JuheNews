@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/joke_author_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="作者"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/diver"/>
+
+        <TextView
+            android:id="@+id/joke_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="咯咯咯咯咯. 以前体检时最害怕抽血，每次都把头扭到一边不敢看，这次一个萌萌的医生妹纸，笑着对我说:不疼啊，你看都抽完了！我回头一看，她笑着扎了进去！！！"
+            tools:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/joke_pic_iv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/ftm"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

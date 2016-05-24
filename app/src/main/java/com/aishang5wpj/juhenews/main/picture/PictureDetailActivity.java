@@ -7,7 +7,6 @@ import android.widget.ImageView;
 
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseActivity;
-import com.aishang5wpj.juhenews.bean.PictureBean;
 import com.aishang5wpj.juhenews.glide.ImageUtils;
 
 /**
@@ -15,10 +14,10 @@ import com.aishang5wpj.juhenews.glide.ImageUtils;
  */
 public class PictureDetailActivity extends BaseActivity {
 
-    public static final String PICTURE = "picture";
+    public static final String PICTURE_URL = "picture";
     private Toolbar mToolbar;
     private ImageView mImageView;
-    private PictureBean.Picture mPicture;
+    private String mPictureUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +49,9 @@ public class PictureDetailActivity extends BaseActivity {
                 onBackPressed();
             }
         });
-        mPicture = (PictureBean.Picture) getIntent().getSerializableExtra(PICTURE);
 
-        ImageUtils.getInstance().display(mImageView, mPicture.getUrl());
-//        mImageView.setImageURI(Uri.parse(mPicture.getUrl()));
+        mPictureUrl = getIntent().getStringExtra(PICTURE_URL);
+        ImageUtils.getInstance().display(mImageView, mPictureUrl);
     }
 
     @Override
