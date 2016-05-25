@@ -69,7 +69,8 @@ public class NewsDetailActivity extends BaseActivity implements INewsDetailView 
         mNewsBean = (NewsBean) getIntent().getSerializableExtra(NEWS_BEAN);
         mToolbar.setTitle(mNewsBean.title);
 
-        ImageUtils.getInstance().display(mImageView, mNewsBean.imgsrc);
+        //占位图太大了，暂时隐藏
+        ImageUtils.getInstance().display(mImageView, mNewsBean.imgsrc, 0, 0);
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.news_detail_ctl);
         collapsingToolbar.setTitle(mNewsBean.title);

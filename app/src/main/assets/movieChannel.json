@@ -1,0 +1,24 @@
+[
+  {
+    "title": "正在上映",
+    "url": "http://api.douban.com/v2/movie/in_theaters?city=%s",
+    "paramsCount": 1
+  },
+  {
+    "title": "即将上映",
+    "url": "http://api.douban.com/v2/movie/coming_soon?start=%s&count=%s",
+    "refreshable": true,
+    "paramsCount": 2
+  },
+  {
+    "title": "北美票房榜",
+    "url": "http://api.douban.com/v2/movie/us_box",
+    "paramsCount": 0
+  },
+  {
+    "title": "Top250",
+    "url": "http://api.douban.com/v2/movie/top250?start=%s&count=%s",
+    "refreshable": true,
+    "paramsCount": 2
+  }
+]

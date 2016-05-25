@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity {
         mFragmentMap.put(getResources().getString(R.string.navigation_weather), new WeatherFragment());
         mFragmentMap.put(getResources().getString(R.string.navigation_about), new AboutFragment());
 
-        switch2Fragment(getResources().getString(R.string.navigation_joke));
+        switch2Fragment(getResources().getString(R.string.navigation_movies));
     }
 
     private void switch2Fragment(CharSequence title) {

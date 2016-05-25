@@ -16,12 +16,12 @@
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_action_bar_title_item.xml"
     },
     {
-        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/layout/abc_simple_dropdown_hint.xml",
-        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_simple_dropdown_hint.xml"
-    },
-    {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
         "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/layout/abc_simple_dropdown_hint.xml",
+        "source": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/layout/abc_simple_dropdown_hint.xml"
     },
     {
         "merged": "/Users/mac/Desktop/develop/workspace/MyApplication/SwipebackLayout/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",

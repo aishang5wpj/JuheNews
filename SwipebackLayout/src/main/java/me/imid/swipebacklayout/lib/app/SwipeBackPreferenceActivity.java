@@ -1,10 +1,11 @@
 
 package me.imid.swipebacklayout.lib.app;
 
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.View;
+
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
 public class SwipeBackPreferenceActivity extends PreferenceActivity implements SwipeBackActivityBase {
     private SwipeBackActivityHelper mHelper;
