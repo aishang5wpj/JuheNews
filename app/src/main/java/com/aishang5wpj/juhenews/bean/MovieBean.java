@@ -1,5 +1,7 @@
 package com.aishang5wpj.juhenews.bean;
 
+import android.text.TextUtils;
+
 import java.util.List;
 
 /**
@@ -64,6 +66,20 @@ public class MovieBean {
          * 简介
          */
         public String summary;
+
+        public boolean isEmpty() {
+
+            return isNull(title, getImageUrl());
+        }
+
+        private boolean isNull(String... params) {
+            for (String param : params) {
+                if (TextUtils.isEmpty(param)) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public String getImageUrl() {
             return getImageUrl(false);

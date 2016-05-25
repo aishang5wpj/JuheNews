@@ -1,0 +1,90 @@
+{
+  "date": "5月20日-5月22日",
+  "subjects": [
+    {
+      "box": 38155177,
+      "new": true,
+      "rank": 1,
+      "subject": {
+        "rating": {
+          "max": 10,
+          "average": 7.3,
+          "stars": "40",
+          "min": 0
+        },
+        "genres": [
+          "喜剧",
+          "动作",
+          "动画"
+        ],
+        "title": "愤怒的小鸟",
+        "casts": [
+          {
+            "alt": "https://movie.douban.com/celebrity/1049521/",
+            "avatars": {
+              "small": "http://img3.doubanio.com/img/celebrity/small/33797.jpg",
+              "large": "http://img3.doubanio.com/img/celebrity/large/33797.jpg",
+              "medium": "http://img3.doubanio.com/img/celebrity/medium/33797.jpg"
+            },
+            "name": "杰森·苏戴奇斯",
+            "id": "1049521"
+          },
+          {
+            "alt": "https://movie.douban.com/celebrity/1305235/",
+            "avatars": {
+              "small": "http://img3.douban.com/img/celebrity/small/38561.jpg",
+              "large": "http://img3.douban.com/img/celebrity/large/38561.jpg",
+              "medium": "http://img3.douban.com/img/celebrity/medium/38561.jpg"
+            },
+            "name": "乔什·加德",
+            "id": "1305235"
+          },
+          {
+            "alt": "https://movie.douban.com/celebrity/1013797/",
+            "avatars": {
+              "small": "http://img3.douban.com/img/celebrity/small/28522.jpg",
+              "large": "http://img3.douban.com/img/celebrity/large/28522.jpg",
+              "medium": "http://img3.douban.com/img/celebrity/medium/28522.jpg"
+            },
+            "name": "丹尼·麦克布耐德",
+            "id": "1013797"
+          }
+        ],
+        "collect_count": 17370,
+        "original_title": "TheAngryBirdsMovie",
+        "subtype": "movie",
+        "directors": [
+          {
+            "alt": "https://movie.douban.com/celebrity/1357709/",
+            "avatars": {
+              "small": "http://img3.doubanio.com/f/movie/ca527386eb8c4e325611e22dfcb04cc116d6b423/pics/movie/celebrity-default-small.png",
+              "large": "http://img3.douban.com/f/movie/63acc16ca6309ef191f0378faf793d1096a3e606/pics/movie/celebrity-default-large.png",
+              "medium": "http://img3.doubanio.com/f/movie/8dd0c794499fe925ae2ae89ee30cd225750457b4/pics/movie/celebrity-default-medium.png"
+            },
+            "name": "费格尔·雷利",
+            "id": "1357709"
+          },
+          {
+            "alt": "https://movie.douban.com/celebrity/1288264/",
+            "avatars": {
+              "small": "http://img3.douban.com/img/celebrity/small/1437105433.0.jpg",
+              "large": "http://img3.douban.com/img/celebrity/large/1437105433.0.jpg",
+              "medium": "http://img3.douban.com/img/celebrity/medium/1437105433.0.jpg"
+            },
+            "name": "克雷·卡提斯",
+            "id": "1288264"
+          }
+        ],
+        "year": "2016",
+        "images": {
+          "small": "http://img3.douban.com/view/movie_poster_cover/ipst/public/p2352310242.jpg",
+          "large": "http://img3.douban.com/view/movie_poster_cover/lpst/public/p2352310242.jpg",
+          "medium": "http://img3.douban.com/view/movie_poster_cover/spst/public/p2352310242.jpg"
+        },
+        "alt": "https://movie.douban.com/subject/6873736/",
+        "id": "6873736"
+      }
+    }
+  ],
+  "title": "豆瓣电影北美票房榜"
+}

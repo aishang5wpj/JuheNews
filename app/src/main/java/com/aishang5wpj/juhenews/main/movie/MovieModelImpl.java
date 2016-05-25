@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aishang5wpj.juhenews.bean.MovieBean;
 import com.aishang5wpj.juhenews.bean.MovieChannelBean;
+import com.aishang5wpj.juhenews.bean.USMovieBean;
 import com.aishang5wpj.juhenews.utils.FileUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -57,8 +58,16 @@ public class MovieModelImpl implements IMovieModel {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
-                String result = response.body().string();
+                //豆瓣电影api返回的数据里莫名其妙多很多回车换行，将导致Gson解析失败
+                String result = response.body().string().replaceAll("\\s", "");
                 MovieBean movieBean = mGson.fromJson(result, MovieBean.class);
+                if (movieBean.subjects != null && movieBean.subjects.size() > 0 && movieBean.subjects.get(0).isEmpty
+                        ()) {
+
+                    //对北美票房数据特殊处理
+                    USMovieBean usMovieBean = mGson.fromJson(result, USMovieBean.class);
+                    movieBean.subjects = usMovieBean.toMovieList();
+                }
                 if (null != loadMoviesListener) {
                     loadMoviesListener.onLoadComplted(movieBean);
                 }
