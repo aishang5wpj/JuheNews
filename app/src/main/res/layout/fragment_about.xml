@@ -3,11 +3,48 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="about"/>
+        android:text="        本APP用来演示Material Design以及MVP设计模式在项目中的使用。\n
+        app的实现过程中学习了Lauren同学发布在https://github.com/liuling07/SimpleNews项目中各种Metaril Design控件的使用，在此感谢原作者的付出。\n
+        除此之外，开发过程中本人加入了自己对Metaril Design、MVP的理解，同时带着处女座的情绪把app做成了现在这样还能看得过去的效果。\n
+        欢迎大家交流。"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autoLink="web"
+        android:text="APP地址：https://github.com/aishang5wpj/JuheNews"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autoLink="web"
+        android:text="作者：aishang5wpj"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autoLink="email"
+        android:text="邮箱：337487365@qq.com"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autoLink="web"
+        android:text="博客：http://blog.csdn.net/aishang5wpj"
+        android:textSize="16sp"/>
 
 </LinearLayout>

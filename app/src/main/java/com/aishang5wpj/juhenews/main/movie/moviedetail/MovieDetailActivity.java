@@ -1,5 +1,6 @@
 package com.aishang5wpj.juhenews.main.movie.moviedetail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,7 @@ import com.aishang5wpj.juhenews.app.BaseActivity;
 import com.aishang5wpj.juhenews.bean.MovieBean;
 import com.aishang5wpj.juhenews.bean.MovieDetailBean;
 import com.aishang5wpj.juhenews.glide.ImageUtils;
+import com.aishang5wpj.juhenews.main.picture.PictureDetailActivity;
 
 import java.util.List;
 
@@ -63,6 +65,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieDetailVie
     @Override
     public void onInitListeners() {
 
+        mLogoIv.setOnClickListener(this);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             private int lastVisibleItem;
 
@@ -125,7 +128,15 @@ public class MovieDetailActivity extends BaseActivity implements IMovieDetailVie
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.movie_detail_logo_iv:
 
+                Intent intent = new Intent(this, PictureDetailActivity.class);
+                intent.putExtra(PictureDetailActivity.PICTURE_URL, mMovie.getImageUrl());
+                startActivity(intent);
+
+                break;
+        }
     }
 
     @Override
