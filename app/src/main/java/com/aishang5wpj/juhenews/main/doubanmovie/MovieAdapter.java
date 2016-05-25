@@ -1,6 +1,8 @@
-package com.aishang5wpj.juhenews.main.picture;
+package com.aishang5wpj.juhenews.main.doubanmovie;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aishang5wpj.juhenews.R;
-import com.aishang5wpj.juhenews.bean.PictureBean;
+import com.aishang5wpj.juhenews.bean.DoubanMovieBean;
 import com.aishang5wpj.juhenews.glide.ImageUtils;
 
 import java.util.List;
@@ -16,10 +18,16 @@ import java.util.List;
 /**
  * Created by wpj on 16/5/23下午1:53.
  */
-public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<PictureBean.Picture> mPictureList;
+    private List<DoubanMovieBean.Movie> mMovieList;
     private OnItemClickListener mItemClickListener;
+
+    private float dp2px(Context context, int value) {
+
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value,
+                context.getResources().getDisplayMetrics());
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,17 +41,17 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        final PictureBean.Picture picture = mPictureList.get(position);
+        final DoubanMovieBean.Movie movie = mMovieList.get(position);
 
         PictureHolder pictureHolder = (PictureHolder) holder;
-        pictureHolder.mTitleTv.setText(picture.title);
-        ImageUtils.getInstance().display(pictureHolder.mImageView, picture.getUrl());
+        pictureHolder.mTitleTv.setText(movie.title);
+        ImageUtils.getInstance().display(pictureHolder.mImageView, movie.getImageUrl());
         pictureHolder.mRootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (null != mItemClickListener) {
-                    mItemClickListener.onItemClick(picture);
+                    mItemClickListener.onItemClick(movie);
                 }
             }
         });
@@ -51,22 +59,22 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        return mPictureList == null ? 0 : mPictureList.size();
+        return mMovieList == null ? 0 : mMovieList.size();
     }
 
-    public void setData(List<PictureBean.Picture> pictureList) {
-        if (pictureList == null) {
+    public void setData(List<DoubanMovieBean.Movie> movieList) {
+        if (movieList == null) {
             return;
         }
-        mPictureList = pictureList;
+        mMovieList = movieList;
         notifyDataSetChanged();
     }
 
-    public void addData(List<PictureBean.Picture> pictureList) {
-        if (pictureList == null) {
+    public void addData(List<DoubanMovieBean.Movie> movieList) {
+        if (movieList == null) {
             return;
         }
-        mPictureList.addAll(pictureList);
+        mMovieList.addAll(movieList);
         notifyDataSetChanged();
     }
 
@@ -75,7 +83,7 @@ public class PictureAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public interface OnItemClickListener {
-        void onItemClick(PictureBean.Picture picture);
+        void onItemClick(DoubanMovieBean.Movie movie);
     }
 
     private class PictureHolder extends RecyclerView.ViewHolder {

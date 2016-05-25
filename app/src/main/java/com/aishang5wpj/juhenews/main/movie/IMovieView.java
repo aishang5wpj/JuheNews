@@ -2,10 +2,8 @@ package com.aishang5wpj.juhenews.main.movie;
 
 import com.aishang5wpj.juhenews.bean.MovieBean;
 
-import java.util.List;
-
 /**
- * Created by wpj on 16/5/24下午5:17.
+ * Created by wpj on 16/5/25上午10:56.
  */
 public interface IMovieView {
 
@@ -15,5 +13,7 @@ public interface IMovieView {
 
     void runOnUiThread(Runnable runnable);
 
-    void onMoviesLoadCompleted(List<MovieBean.Movie> MovieList);
+    void onLoadMoviesCompleted(MovieBean movieBean);
+
+    void showToast(String msg);
 }

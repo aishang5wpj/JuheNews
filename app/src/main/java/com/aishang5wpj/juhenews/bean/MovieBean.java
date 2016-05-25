@@ -1,114 +1,58 @@
 package com.aishang5wpj.juhenews.bean;
 
-import android.text.TextUtils;
-
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
- * Created by wpj on 16/5/24下午5:49.
+ * Created by wpj on 16/5/25上午11:11.
  */
 public class MovieBean {
 
-    public String title;
-    public List<Movie> subjects;
+    public String status;
+    public Data data;
+
+    public class Data {
+
+        public boolean hasNext;
+        public List<Movie> movies;
+    }
 
     public class Movie {
-
-        /**
-         * 电影标签、分类
-         */
-        public List<String> genres;
-        /**
-         * 电影名
-         */
-        public String title;
-        /**
-         * 原名
-         */
-        public String original_title;
-        /**
-         * 又名
-         */
-        public String aka;
-        /**
-         * 电影海报
-         */
-        public Avatars images;
-        /**
-         * 主演
-         */
-        public List<Casts> casts;
-        /**
-         * 导演
-         */
-        public List<Casts> directors;
-        /**
-         * 如果条目类型是电影则为上映日期，如果是电视剧则为首Ï日期
-         */
-        public String pubdates;
-        /**
-         * 年代
-         */
-        public String year;
-        /***
-         * 语言
-         */
-        public String languages;
-        /***
-         * 片长
-         */
-        public String durations;
-        /**
-         * 制片国家/地区
-         */
-        public String countries;
-        /**
-         * 简介
-         */
-        public String summary;
-
-        public boolean isEmpty() {
-
-            return isNull(title, getImageUrl());
-        }
-
-        private boolean isNull(String... params) {
-            for (String param : params) {
-                if (TextUtils.isEmpty(param)) {
-                    return true;
-                }
-            }
-            return false;
-        }
+        public String cnms;//0
+        public String sn;//0
+        public String late;//false
+        public String showInfo;//今天174家影院放映2159场
+        public String src;//
+        public String showDate;//
+        public String pn;//128
+        public String preSale;//0
+        public String vd;//
+        public String dir;//费格尔·雷利,克莱·凯蒂
+        public String star;//杰森·苏戴奇斯,乔什·盖德,丹尼·麦克布耐德
+        public String cat;//动画,奇幻,冒险
+        public String wish;//123045（想看）
+        public String nm;//愤怒的小鸟
+        public String sc;//8.9
+        public String ver;//3D/中国巨幕
+        public String rt;//2016-05-20上映
+        public String dur;//97
+        public String img;//http://p0.meituan.net/165.220/movie/b721e73740601799c065affb619d837e151622.jpg
+        public String snum;//83528（评论？）
+        public String scm;//绿猪来偷蛋，鸟儿群奋战
+        public String imax;//false
+        public String id;//246188
+        public String time;//
 
         public String getImageUrl() {
-            return getImageUrl(false);
+
+            Pattern pattern = Pattern.compile("p0.meituan.net/(w|[0-9]+)[.](h|[0-9]+)/movie/");
+            Matcher matcher = pattern.matcher(img);
+            return matcher.replaceAll("p0.meituan.net/720.1080/movie/");
         }
 
-        public String getImageUrl(boolean isLarge) {
-            if (null == images || null == images.medium) {
-                return "";
-            }
-            return isLarge ? images.large : images.medium;
+        public String getImageUrl(int w, int h) {
+            return img;
         }
-    }
-
-    /**
-     * 主演
-     */
-    public class Casts {
-        public String alt;
-        public String name;
-        public String id;
-        public Avatars avatars;
-    }
-
-    /**
-     * 影人头像，分别提供420px x 600px(大)，140px x 200px(中) 70px x 100px(小)尺寸
-     */
-    public class Avatars {
-        public String small;
-        public String medium;
-        public String large;
     }
 }

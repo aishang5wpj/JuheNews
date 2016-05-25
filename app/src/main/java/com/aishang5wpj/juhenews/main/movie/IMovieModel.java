@@ -1,27 +1,18 @@
 package com.aishang5wpj.juhenews.main.movie;
 
-import android.content.Context;
-
 import com.aishang5wpj.juhenews.bean.MovieBean;
-import com.aishang5wpj.juhenews.bean.MovieChannelBean;
-
-import java.util.List;
 
 /**
- * Created by wpj on 16/5/24下午5:17.
+ * Created by wpj on 16/5/25上午10:57.
  */
 public interface IMovieModel {
-    void loadChannel(Context context, OnLoadChannelListener listener);
 
-    void loadMovies(MovieChannelBean channel, int pageIndex, OnLoadMoviesListener loadMoviesListener);
+    void loadMovies(int pageIndex, OnLoadMovieListener listener);
 
-    interface OnLoadChannelListener {
-        void onLoadComplted(List<MovieChannelBean> channelList);
-    }
+    interface OnLoadMovieListener {
 
-    interface OnLoadMoviesListener {
         void onLoadFailed();
 
-        void onLoadComplted(MovieBean movieBean);
+        void onLoadCompleted(MovieBean movieBean);
     }
 }

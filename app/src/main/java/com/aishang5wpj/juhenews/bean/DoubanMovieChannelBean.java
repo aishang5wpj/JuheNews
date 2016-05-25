@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by wpj on 16/5/24下午5:14.
  */
-public class MovieChannelBean implements Serializable {
+public class DoubanMovieChannelBean implements Serializable {
 
     private static final int PAGE_SIZE = 10;
     public String title;

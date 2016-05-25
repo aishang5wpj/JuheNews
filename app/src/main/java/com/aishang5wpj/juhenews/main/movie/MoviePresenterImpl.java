@@ -1,88 +1,57 @@
 package com.aishang5wpj.juhenews.main.movie;
 
-import android.content.Context;
-
 import com.aishang5wpj.juhenews.bean.MovieBean;
-import com.aishang5wpj.juhenews.bean.MovieChannelBean;
-
-import java.util.List;
 
 /**
- * Created by wpj on 16/5/24下午5:17.
+ * Created by wpj on 16/5/25上午10:56.
  */
 public class MoviePresenterImpl implements IMoviePresenter {
 
-    private IMovieModel mMovieModel;
-    private IMovieChannelView mMovieChannelView;
     private IMovieView mMovieView;
-    private boolean mIsLoading = false;
+    private IMovieModel mMovieModel;
 
-    private MoviePresenterImpl() {
+    public MoviePresenterImpl(IMovieView movieView) {
+        mMovieView = movieView;
         mMovieModel = new MovieModelImpl();
     }
 
-    public MoviePresenterImpl(IMovieChannelView channelView) {
-        this();
-        mMovieChannelView = channelView;
-    }
-
-    public MoviePresenterImpl(IMovieView movieView) {
-        this();
-        mMovieView = movieView;
+    @Override
+    public int getStartIndex() {
+        return 0;
     }
 
     @Override
-    public void loadChannel(Context context) {
+    public void loadMovies(int pageIndex) {
 
-        mMovieModel.loadChannel(context, new IMovieModel.OnLoadChannelListener() {
-            @Override
-            public void onLoadComplted(List<MovieChannelBean> channelList) {
-
-                mMovieChannelView.onLoadChannelComplted(channelList);
-            }
-        });
-    }
-
-    @Override
-    public void loadMovies(MovieChannelBean channel, int pageIndex) {
-
-        if (mIsLoading) {
-            return;
-        }
-        mIsLoading = true;
         mMovieView.showProgress();
-        mMovieModel.loadMovies(channel, pageIndex, new IMovieModel.OnLoadMoviesListener() {
+        mMovieModel.loadMovies(pageIndex, new IMovieModel.OnLoadMovieListener() {
             @Override
             public void onLoadFailed() {
-                mIsLoading = false;
+
                 mMovieView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mMovieView.hideProgress();
+                        mMovieView.showToast("加载失败");
                     }
                 });
             }
 
             @Override
-            public void onLoadComplted(final MovieBean movieBean) {
+            public void onLoadCompleted(final MovieBean movieBean) {
 
-                mIsLoading = false;
                 if (null == movieBean) {
                     return;
                 }
                 mMovieView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+
                         mMovieView.hideProgress();
-                        mMovieView.onMoviesLoadCompleted(movieBean.subjects);
+                        mMovieView.onLoadMoviesCompleted(movieBean);
                     }
                 });
             }
         });
-    }
-
-    @Override
-    public int getStartIndex() {
-        return 0;
     }
 }

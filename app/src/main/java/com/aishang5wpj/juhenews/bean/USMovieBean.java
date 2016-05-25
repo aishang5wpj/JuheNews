@@ -11,8 +11,8 @@ public class USMovieBean {
     public String title;
     public List<USMovie> subjects;
 
-    public List<MovieBean.Movie> toMovieList() {
-        List<MovieBean.Movie> movieList = new ArrayList<>();
+    public List<DoubanMovieBean.Movie> toMovieList() {
+        List<DoubanMovieBean.Movie> movieList = new ArrayList<>();
         for (USMovie subject : subjects) {
             movieList.add(subject.subject);
         }
@@ -25,6 +25,6 @@ public class USMovieBean {
     public class USMovie {
         public String box;
         public String rank;
-        public MovieBean.Movie subject;
+        public DoubanMovieBean.Movie subject;
     }
 }

@@ -1,4 +1,4 @@
-package com.aishang5wpj.juhenews.main.movie;
+package com.aishang5wpj.juhenews.main.doubanmovie;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.View;
 
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseFragment;
-import com.aishang5wpj.juhenews.bean.MovieBean;
-import com.aishang5wpj.juhenews.bean.MovieChannelBean;
+import com.aishang5wpj.juhenews.bean.DoubanMovieBean;
+import com.aishang5wpj.juhenews.bean.DoubanMovieChannelBean;
 import com.aishang5wpj.juhenews.main.picture.PictureDetailActivity;
 
 import java.util.List;
@@ -27,11 +27,11 @@ public class MovieListFragment extends BaseFragment implements IMovieView {
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private IMoviePresenter mMoviePresenter;
-    private MovieChannelBean mChannel;
+    private DoubanMovieChannelBean mChannel;
     private MovieAdapter mMovieAdapter;
     private int mPageIndex;
 
-    public static MovieListFragment newFragment(MovieChannelBean channel) {
+    public static MovieListFragment newFragment(DoubanMovieChannelBean channel) {
         MovieListFragment fragment = new MovieListFragment();
         Bundle data = new Bundle();
         data.putSerializable(MOVIE_CHANNEL, channel);
@@ -96,7 +96,7 @@ public class MovieListFragment extends BaseFragment implements IMovieView {
     @Override
     public void onInitData() {
 
-        mChannel = (MovieChannelBean) getArguments().getSerializable(MOVIE_CHANNEL);
+        mChannel = (DoubanMovieChannelBean) getArguments().getSerializable(MOVIE_CHANNEL);
 
         //设置布局管理器
         mLayoutManager = new LinearLayoutManager(getContext());
@@ -108,7 +108,7 @@ public class MovieListFragment extends BaseFragment implements IMovieView {
         mMovieAdapter = new MovieAdapter();
         mMovieAdapter.setOnItemClickListener(new MovieAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(MovieBean.Movie movie) {
+            public void onItemClick(DoubanMovieBean.Movie movie) {
 
                 Intent intent = new Intent(getActivity(), PictureDetailActivity.class);
                 intent.putExtra(PictureDetailActivity.PICTURE_URL, movie.getImageUrl());
@@ -148,7 +148,7 @@ public class MovieListFragment extends BaseFragment implements IMovieView {
     }
 
     @Override
-    public void onMoviesLoadCompleted(List<MovieBean.Movie> MovieList) {
+    public void onMoviesLoadCompleted(List<DoubanMovieBean.Movie> MovieList) {
 
         if (mMoviePresenter.getStartIndex() == mPageIndex) {
 

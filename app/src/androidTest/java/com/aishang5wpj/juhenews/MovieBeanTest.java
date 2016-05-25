@@ -2,7 +2,7 @@ package com.aishang5wpj.juhenews;
 
 import android.test.AndroidTestCase;
 
-import com.aishang5wpj.juhenews.bean.MovieBean;
+import com.aishang5wpj.juhenews.bean.DoubanMovieBean;
 import com.aishang5wpj.juhenews.utils.FileUtils;
 import com.google.gson.Gson;
 
@@ -22,7 +22,7 @@ public class MovieBeanTest extends AndroidTestCase {
         super.testAndroidTestCaseSetupProperly();
 
         String result = FileUtils.readAssertsFile(mContext, "test/movie.json");
-        MovieBean movieBean = mGson.fromJson(result, MovieBean.class);
+        DoubanMovieBean movieBean = mGson.fromJson(result, DoubanMovieBean.class);
         assertNotNull(movieBean);
     }
 }

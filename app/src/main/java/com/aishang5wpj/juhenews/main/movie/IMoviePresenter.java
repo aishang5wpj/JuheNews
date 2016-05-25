@@ -1,16 +1,10 @@
 package com.aishang5wpj.juhenews.main.movie;
 
-import android.content.Context;
-
-import com.aishang5wpj.juhenews.bean.MovieChannelBean;
-
 /**
- * Created by wpj on 16/5/24下午5:16.
+ * Created by wpj on 16/5/25上午10:56.
  */
 public interface IMoviePresenter {
-    void loadChannel(Context context);
-
-    void loadMovies(MovieChannelBean channel, int pageIndex);
-
     int getStartIndex();
+
+    void loadMovies(int pageIndex);
 }

@@ -1,58 +1,95 @@
 package com.aishang5wpj.juhenews.main.movie;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.aishang5wpj.baiduloc.LocationHelper;
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseFragment;
-import com.aishang5wpj.juhenews.app.MyApplication;
-import com.aishang5wpj.juhenews.bean.MovieChannelBean;
-import com.aishang5wpj.juhenews.main.news.NewsPagerAdpater;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.aishang5wpj.juhenews.bean.MovieBean;
 
 /**
- * Created by wpj on 16/5/16上午10:41.
+ * Created by wpj on 16/5/25上午10:55.
  */
-public class MovieFragment extends BaseFragment implements LocationHelper.OnLocationListener, IMovieChannelView {
+public class MovieFragment extends BaseFragment implements IMovieView {
 
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
+    private SwipeRefreshLayout mRefreshLayout;
+    private RecyclerView mRecyclerView;
+    private int mPageIndex;
     private IMoviePresenter mMoviePresenter;
-    private NewsPagerAdpater mPagerAdpater;
+    private MovieAdapter mMovieAdapter;
+    private boolean mHasNext;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_movie;
+        return R.layout.fragment_picture_list;
     }
 
     @Override
     public void onInitViews() {
 
-        mTabLayout = (TabLayout) findViewById(R.id.movie_tl);
-        mViewPager = (ViewPager) findViewById(R.id.movie_vp);
+        mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.picture_swipe_refresh_layout);
+        mRecyclerView = (RecyclerView) findViewById(R.id.picture_recycler_view);
     }
 
     @Override
     public void onInitListeners() {
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPageIndex = mMoviePresenter.getStartIndex();
+                mMoviePresenter.loadMovies(mPageIndex);
+            }
+        });
 
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            private int lastVisibleItem;
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        && lastVisibleItem + 1 == recyclerView.getAdapter().getItemCount()) {
+
+                    //加载更多
+                    mRefreshLayout.setRefreshing(true);
+                    mMoviePresenter.loadMovies(mPageIndex);
+                }
+            }
+        });
     }
 
     @Override
     public void onInitData() {
+        mMovieAdapter = new MovieAdapter();
+        mMovieAdapter.setOnItemClickListener(new MovieAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(MovieBean.Movie movie) {
 
-        mPagerAdpater = new NewsPagerAdpater(getChildFragmentManager());
-        mViewPager.setAdapter(mPagerAdpater);
 
-        mTabLayout.setupWithViewPager(mViewPager);
-        LocationHelper.getHelper().start(this);
+            }
+        });
+        //设置布局管理器
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        //设置adapter
+        mRecyclerView.setAdapter(mMovieAdapter);
+        //设置Item增加、移除动画
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setHasFixedSize(true);
 
         mMoviePresenter = new MoviePresenterImpl(this);
-        mMoviePresenter.loadChannel(getActivity());
+        mPageIndex = mMoviePresenter.getStartIndex();
+        mMoviePresenter.loadMovies(mPageIndex);
     }
 
     @Override
@@ -61,30 +98,39 @@ public class MovieFragment extends BaseFragment implements LocationHelper.OnLoca
     }
 
     @Override
-    public void onLocationFailed() {
+    public void showProgress() {
 
-        MyApplication.CITY = LocationHelper.DEFAULT_CITY;
+        mRefreshLayout.setRefreshing(true);
     }
 
     @Override
-    public void onLocationSuccessed(String city, double latitude, double lontitude) {
-        MyApplication.CITY = city;
+    public void hideProgress() {
+
+        mRefreshLayout.setRefreshing(false);
     }
 
     @Override
-    public void onLoadChannelComplted(List<MovieChannelBean> channelList) {
+    public void runOnUiThread(Runnable runnable) {
 
-        mPagerAdpater.clear();
-        mTabLayout.removeAllTabs();
+        getActivity().runOnUiThread(runnable);
+    }
 
-        List<String> titleList = new ArrayList<>();
-        List<Fragment> fragmentList = new ArrayList<>();
-        for (MovieChannelBean channel : channelList) {
-            mTabLayout.addTab(mTabLayout.newTab().setText(channel.title));
-            titleList.add(channel.title);
-            fragmentList.add(MovieListFragment.newFragment(channel));
+    @Override
+    public void onLoadMoviesCompleted(MovieBean movieBean) {
+
+        mHasNext = movieBean.data.hasNext;
+        if (mPageIndex == mMoviePresenter.getStartIndex()) {
+
+            mMovieAdapter.setData(movieBean.data.movies);
+        } else {
+
+            mMovieAdapter.addData(movieBean.data.movies);
         }
-        mPagerAdpater.setData(fragmentList, titleList);
-        mViewPager.setOffscreenPageLimit(channelList.size() - 1);
+        mPageIndex++;
+    }
+
+    @Override
+    public void showToast(String msg) {
+        Snackbar.make(getActivity().getWindow().getDecorView(), msg, Snackbar.LENGTH_SHORT).show();
     }
 }
