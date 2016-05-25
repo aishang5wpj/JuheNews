@@ -1,5 +1,6 @@
 package com.aishang5wpj.juhenews.main.movie;
 
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,6 +11,7 @@ import android.view.View;
 import com.aishang5wpj.juhenews.R;
 import com.aishang5wpj.juhenews.app.BaseFragment;
 import com.aishang5wpj.juhenews.bean.MovieBean;
+import com.aishang5wpj.juhenews.main.movie.moviedetail.MovieDetailActivity;
 
 /**
  * Created by wpj on 16/5/25上午10:55.
@@ -63,7 +65,13 @@ public class MovieFragment extends BaseFragment implements IMovieView {
 
                     //加载更多
                     mRefreshLayout.setRefreshing(true);
-                    mMoviePresenter.loadMovies(mPageIndex);
+                    if (mHasNext) {
+
+                        mMoviePresenter.loadMovies(mPageIndex);
+                    } else {
+
+                        showToast("后面没有了哦");
+                    }
                 }
             }
         });
@@ -76,7 +84,9 @@ public class MovieFragment extends BaseFragment implements IMovieView {
             @Override
             public void onItemClick(MovieBean.Movie movie) {
 
-
+                Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
+                intent.putExtra(MovieDetailActivity.MOVIE, movie);
+                startActivity(intent);
             }
         });
         //设置布局管理器

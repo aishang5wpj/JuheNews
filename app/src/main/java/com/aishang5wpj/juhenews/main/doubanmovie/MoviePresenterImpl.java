@@ -67,14 +67,14 @@ public class MoviePresenterImpl implements IMoviePresenter {
             public void onLoadComplted(final DoubanMovieBean movieBean) {
 
                 mIsLoading = false;
-                if (null == movieBean) {
-                    return;
-                }
                 mMovieView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mMovieView.hideProgress();
-                        mMovieView.onMoviesLoadCompleted(movieBean.subjects);
+                        if (null != movieBean) {
+
+                            mMovieView.onMoviesLoadCompleted(movieBean.subjects);
+                        }
                     }
                 });
             }

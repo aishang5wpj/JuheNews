@@ -14,4 +14,5 @@
     <color name="common_background">#f3f3f3</color>
     <color name="diver">#eeeeee</color>
     <color name="transparent">#00000000</color>
+    <color name="red">#f00</color>
 </resources>

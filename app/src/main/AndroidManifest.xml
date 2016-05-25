@@ -36,6 +36,9 @@
         <activity android:name=".main.picture.PictureDetailActivity">
 
         </activity>
+        <activity
+            android:name=".main.movie.moviedetail.MovieDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar.Translucent"></activity>
     </application>
 
 </manifest>

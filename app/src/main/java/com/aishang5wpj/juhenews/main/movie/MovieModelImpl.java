@@ -13,6 +13,8 @@ import okhttp3.Response;
 
 /**
  * Created by wpj on 16/5/25上午10:57.
+ *
+ * @see http://www.jianshu.com/p/9855610eb1d4
  */
 public class MovieModelImpl implements IMovieModel {
 

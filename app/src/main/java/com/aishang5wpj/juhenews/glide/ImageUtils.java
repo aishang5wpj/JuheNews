@@ -74,6 +74,20 @@ public class ImageUtils {
                 .into(imageView);
     }
 
+    /*
+    *
+    * http://www.apkbus.com/forum.php?mod=viewthread&tid=245257
+    * */
+    public void displayCircleImg(ImageView imageView, String url) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Glide.with(imageView.getContext())
+                .load(url)
+                .transform(new GlideCircleTransform(imageView.getContext()))
+                .into(imageView);
+    }
+
     private static final class LazyHolder {
         private static final ImageUtils INSTANCE = new ImageUtils();
     }

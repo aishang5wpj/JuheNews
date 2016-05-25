@@ -40,15 +40,15 @@ public class MoviePresenterImpl implements IMoviePresenter {
             @Override
             public void onLoadCompleted(final MovieBean movieBean) {
 
-                if (null == movieBean) {
-                    return;
-                }
                 mMovieView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
 
                         mMovieView.hideProgress();
-                        mMovieView.onLoadMoviesCompleted(movieBean);
+                        if (null != movieBean) {
+
+                            mMovieView.onLoadMoviesCompleted(movieBean);
+                        }
                     }
                 });
             }

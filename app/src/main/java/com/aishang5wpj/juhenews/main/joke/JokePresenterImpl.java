@@ -26,14 +26,14 @@ public class JokePresenterImpl implements IJokePresenter {
             @Override
             public void onLoadCompleted(final JokeBean jokeBean) {
 
-                if (null == jokeBean) {
-                    return;
-                }
                 mJokeView.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mJokeView.hideProgress();
-                        mJokeView.onLoadCompleted(jokeBean.detail);
+                        if (null != jokeBean) {
+
+                            mJokeView.onLoadCompleted(jokeBean.detail);
+                        }
                     }
                 });
             }

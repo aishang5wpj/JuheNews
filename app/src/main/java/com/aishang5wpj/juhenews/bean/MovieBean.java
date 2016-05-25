@@ -1,5 +1,6 @@
 package com.aishang5wpj.juhenews.bean;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,7 +19,7 @@ public class MovieBean {
         public List<Movie> movies;
     }
 
-    public class Movie {
+    public class Movie implements Serializable{
         public String cnms;//0
         public String sn;//0
         public String late;//false

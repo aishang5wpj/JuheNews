@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/movie_detail_comment_icon_iv"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ftm"/>
+
+            <TextView
+                android:id="@+id/movie_detail_comment_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="步步格ccc 2016-05-21 14:09"/>
+
+            <TextView
+                android:id="@+id/movie_detail_comment_score_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="3.5"
+                android:textColor="@color/red"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/diver"/>
+
+        <TextView
+            android:id="@+id/movie_detail_comment_content_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="把一个几分钟一关的puz益智游戏拍成一个RPG确实需要挑战。愤怒的小鸟的确是个老少合家欢，简单的剧本枯燥被逗比的小黄鸟填充的挺饱满的，主角集团也完全符合一个逗比搞笑，一个呆傻憨厚，一个倒霉高尚，还传递了一个愤怒还是和平的讨论，虽然配音挺潮流但还是想看原声版。总分……嗯7分"
+            tools:visibility="visible"/>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
