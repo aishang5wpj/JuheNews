@@ -49,6 +49,9 @@ public class MovieModelImpl implements IMovieModel {
             @Override
             public void onFailure(Call call, IOException e) {
 
+                if (null != loadMoviesListener) {
+                    loadMoviesListener.onLoadFailed();
+                }
             }
 
             @Override

@@ -33,7 +33,9 @@ public class MovieChannelBean implements Serializable {
                 break;
             case 2:
                 //分页查询
-                result = String.format(url, page, PAGE_SIZE);
+                // start：偏移量，起始位置，不是页的序号
+                // count：加载条数
+                result = String.format(url, page * PAGE_SIZE, PAGE_SIZE);
                 break;
         }
         return result;

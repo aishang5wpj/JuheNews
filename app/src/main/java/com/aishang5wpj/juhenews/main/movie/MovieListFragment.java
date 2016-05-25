@@ -86,7 +86,6 @@ public class MovieListFragment extends BaseFragment implements IMovieView {
                     //加载更多
                     if (mChannel.isRefreshable()) {
 
-                        mRefreshLayout.setRefreshing(true);
                         mMoviePresenter.loadMovies(mChannel, mPageIndex);
                     }
                 }
@@ -151,7 +150,6 @@ public class MovieListFragment extends BaseFragment implements IMovieView {
     @Override
     public void onMoviesLoadCompleted(List<MovieBean.Movie> MovieList) {
 
-        mMovieAdapter.setData(MovieList);
         if (mMoviePresenter.getStartIndex() == mPageIndex) {
 
             mMovieAdapter.setData(MovieList);

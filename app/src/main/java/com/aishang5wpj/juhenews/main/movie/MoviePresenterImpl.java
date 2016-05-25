@@ -15,6 +15,7 @@ public class MoviePresenterImpl implements IMoviePresenter {
     private IMovieModel mMovieModel;
     private IMovieChannelView mMovieChannelView;
     private IMovieView mMovieView;
+    private boolean mIsLoading = false;
 
     private MoviePresenterImpl() {
         mMovieModel = new MovieModelImpl();
@@ -45,11 +46,27 @@ public class MoviePresenterImpl implements IMoviePresenter {
     @Override
     public void loadMovies(MovieChannelBean channel, int pageIndex) {
 
+        if (mIsLoading) {
+            return;
+        }
+        mIsLoading = true;
         mMovieView.showProgress();
         mMovieModel.loadMovies(channel, pageIndex, new IMovieModel.OnLoadMoviesListener() {
             @Override
+            public void onLoadFailed() {
+                mIsLoading = false;
+                mMovieView.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mMovieView.hideProgress();
+                    }
+                });
+            }
+
+            @Override
             public void onLoadComplted(final MovieBean movieBean) {
 
+                mIsLoading = false;
                 if (null == movieBean) {
                     return;
                 }

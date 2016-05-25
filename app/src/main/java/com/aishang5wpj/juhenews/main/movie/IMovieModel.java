@@ -20,6 +20,8 @@ public interface IMovieModel {
     }
 
     interface OnLoadMoviesListener {
+        void onLoadFailed();
+
         void onLoadComplted(MovieBean movieBean);
     }
 }
