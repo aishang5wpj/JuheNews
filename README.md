@@ -13,7 +13,7 @@ SwipeRefershLayout下拉刷新+RecylerView上拉加载
  
 RecyclerView+CardView
 --
-![image](https://github.com/aishang5wpj/JuheNews/raw/master/images/SwipeRefershLayout+RecylerView.gif)
+![image](https://github.com/aishang5wpj/JuheNews/raw/master/images/RecyclerView+CardView.gif)
  
 CoordinatorLayout+CollapsingToolbarLayout+NestedScrollView
 --
