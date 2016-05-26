@@ -15,4 +15,6 @@
     <color name="diver">#eeeeee</color>
     <color name="transparent">#00000000</color>
     <color name="red">#f00</color>
+    <color name="blue">#00f</color>
+    <color name="light_white">#DCDCDC</color>
 </resources>

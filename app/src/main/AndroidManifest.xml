@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".main.MainActivity">
+            android:name=".main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -33,12 +34,16 @@
             android:theme="@style/AppTheme.NoActionBar.Translucent">
 
         </activity>
-        <activity android:name=".main.picture.PictureDetailActivity">
+        <activity
+            android:name=".main.picture.PictureDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity
             android:name=".main.movie.moviedetail.MovieDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar.Translucent"></activity>
+            android:theme="@style/AppTheme.NoActionBar.Translucent">
+
+        </activity>
     </application>
 
 </manifest>

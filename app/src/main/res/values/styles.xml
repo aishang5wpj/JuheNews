@@ -1,14 +1,7 @@
 <resources>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <!--Window color-->
-        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
-    </style>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.Base">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <!--菜单选中时的文字颜色-->
         <item name="colorPrimary">@color/colorPrimary</item>

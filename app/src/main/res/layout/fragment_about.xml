@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:text="        本APP用来演示Material Design以及MVP设计模式在项目中的使用。\n
         app的实现过程中学习了Lauren同学发布在https://github.com/liuling07/SimpleNews项目中各种Metaril Design控件的使用，在此感谢原作者的付出。\n
-        除此之外，开发过程中本人加入了自己对Metaril Design、MVP的理解，同时带着处女座的情绪把app做成了现在这样还能看得过去的效果。\n
+        除此之外，app中的所有api均来自互联网，在此一并感谢相关人员的无私奉献，如有版权相关问题请及时告知，谢谢。\n
+        开发过程中本人加入了自己对Metaril Design、MVP的理解，同时带着处女座的情绪把app做成了现在这样还能看得过去的效果。\n
         欢迎大家交流。"
         android:textSize="16sp"/>
 
