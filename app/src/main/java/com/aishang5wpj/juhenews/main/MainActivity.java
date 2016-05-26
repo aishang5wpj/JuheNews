@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity {
         mFragmentMap.put(getResources().getString(R.string.navigation_joke), new JokeFragment());
         mFragmentMap.put(getResources().getString(R.string.navigation_about), new AboutFragment());
 
-        switch2Fragment(getResources().getString(R.string.navigation_about));
+        switch2Fragment(getResources().getString(R.string.navigation_news));
     }
 
     private void switch2Fragment(CharSequence title) {
