@@ -19,11 +19,9 @@ import com.aishang5wpj.juhenews.app.BaseFragment;
 import com.aishang5wpj.juhenews.glide.ImageUtils;
 import com.aishang5wpj.juhenews.main.about.AboutFragment;
 import com.aishang5wpj.juhenews.main.joke.JokeFragment;
-import com.aishang5wpj.juhenews.main.menu.MenuFragment;
 import com.aishang5wpj.juhenews.main.movie.MovieFragment;
 import com.aishang5wpj.juhenews.main.news.NewsFragment;
 import com.aishang5wpj.juhenews.main.picture.PictureFragment;
-import com.aishang5wpj.juhenews.main.weather.WeatherFragment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,11 +86,9 @@ public class MainActivity extends BaseActivity {
         mFragmentMap.put(getResources().getString(R.string.navigation_movies), new MovieFragment());
         mFragmentMap.put(getResources().getString(R.string.navigation_picture), new PictureFragment());
         mFragmentMap.put(getResources().getString(R.string.navigation_joke), new JokeFragment());
-        mFragmentMap.put(getResources().getString(R.string.navigation_menu), new MenuFragment());
-        mFragmentMap.put(getResources().getString(R.string.navigation_weather), new WeatherFragment());
         mFragmentMap.put(getResources().getString(R.string.navigation_about), new AboutFragment());
 
-        switch2Fragment(getResources().getString(R.string.navigation_movies));
+        switch2Fragment(getResources().getString(R.string.navigation_about));
     }
 
     private void switch2Fragment(CharSequence title) {
@@ -113,10 +109,15 @@ public class MainActivity extends BaseActivity {
         }
         //show or add target fragment
         if (null == getSupportFragmentManager().findFragmentByTag(showTag)) {
-            ft.replace(R.id.frame_content, showFragment, showTag);
-        } else {
-            ft.show(showFragment);
+            if (ft.isEmpty()) {
+
+                ft.replace(R.id.frame_content, showFragment, showTag);
+            } else if (!showFragment.isAdded()) {
+
+                ft.add(R.id.frame_content, showFragment, showTag);
+            }
         }
+        ft.show(showFragment);
         //commit
         ft.commit();
         mLastFragmentName = showTag;

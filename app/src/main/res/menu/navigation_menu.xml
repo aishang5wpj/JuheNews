@@ -22,14 +22,6 @@
             android:title="@string/navigation_joke"/>
 
         <item
-            android:id="@+id/navigation_menu"
-            android:icon="@mipmap/ic_description_white_24dp"
-            android:title="@string/navigation_menu"/>
-        <item
-            android:id="@+id/navigation_weather"
-            android:icon="@mipmap/ic_cloud_white_24dp"
-            android:title="@string/navigation_weather"/>
-        <item
             android:id="@+id/navigation_about"
             android:icon="@mipmap/ic_info_outline_white_24dp"
             android:title="@string/navigation_about"/>
