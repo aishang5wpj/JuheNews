@@ -1,1 +1,1 @@
-include ':app', ':baiduloc', ':SwipebackLayout'
+include ':app', ':baiduloc', ':SwipebackLayout', ':juheDemo'

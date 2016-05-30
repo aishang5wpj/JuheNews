@@ -1,4 +1,4 @@
-package com.aishang5wpj.juhe01;
+package com.aishang5wpj.juheDemo;
 
 import org.junit.Test;
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.aishang5wpj.juhe01"
+<manifest package="com.aishang5wpj.juheDemo"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".MainActivity">
+            android:name=".juhe02.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -17,16 +17,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ToolbarActivity">
+            android:name=".juhe02.ToolbarActivity">
         </activity>
         <activity
-            android:name=".AppBarLayoutActivity">
+            android:name=".juhe02.AppBarLayoutActivity">
         </activity>
         <activity
-            android:name=".CoordinatorLayoutActivity">
+            android:name=".juhe02.CoordinatorLayoutActivity">
         </activity>
         <activity
-            android:name=".CollapsingToolbarLayoutActivity">
+            android:name=".juhe02.CollapsingToolbarLayoutActivity">
         </activity>
     </application>
 </manifest>
