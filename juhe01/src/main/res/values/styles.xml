@@ -1,0 +1,31 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.More">
+        <!--action menu的按钮样式-->
+        <item name="actionOverflowButtonStyle">@style/AppTheme.Toolbar.MoreStyle</item>
+        <!--工具栏上的文字颜色-->
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.Toolbar.MoreStyle" parent="AppTheme.Toolbar">
+        <item name="android:src">@mipmap/more</item>
+    </style>
+
+    <!--ActionBar白色字体-->
+    <style name="AppTheme.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    </style>
+
+</resources>
