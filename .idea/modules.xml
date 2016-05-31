@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baiduloc/baiduloc.iml" filepath="$PROJECT_DIR$/baiduloc/baiduloc.iml" />
       <module fileurl="file://$PROJECT_DIR$/juheDemo/juhe01.iml" filepath="$PROJECT_DIR$/juheDemo/juhe01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/juheDemo/juheDemo.iml" filepath="$PROJECT_DIR$/juheDemo/juheDemo.iml" />
     </modules>
   </component>
 </project>
