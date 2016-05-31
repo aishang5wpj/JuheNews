@@ -24,6 +24,9 @@ JuheNews系列之一 · 前言
 项目已经开源：
 > github链接：[https://github.com/aishang5wpj/JuheNews](https://github.com/aishang5wpj/JuheNews)
 
+> 文章介绍：
+> [http://blog.csdn.net/aishang5wpj/article/details/51507059](http://blog.csdn.net/aishang5wpj/article/details/51507059)
+
 下面是效果图。
 
 AppBarLayout+ToolBar+DrawerLayout+NavigationView
@@ -45,3 +48,20 @@ RecyclerView+CardView
 CoordinatorLayout+CollapsingToolbarLayout+NestedScrollView
 --
 ![image](https://github.com/aishang5wpj/JuheNews/raw/master/images/CoordinatorLayout+CollapsingToolbarLayout+NestedScrollView.gif)
+
+关于
+--
+
+博客：[http://blog.csdn.net/aishang5wpj](http://blog.csdn.net/aishang5wpj)
+
+邮箱：337487365@qq.com
+
+License
+--
+Copyright 2016 aishang5wpj
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
